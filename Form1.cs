@@ -2,21 +2,26 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Management;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace PcComponentnsStats
 {
     public partial class Form1 : Form
     {
+        PerformanceCounter cpuCounter;
         public Form1()
         {
             InitializeComponent();
+            cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
         }
+
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -31,6 +36,8 @@ namespace PcComponentnsStats
             }
             //Will set the text to the temperatures
             cpu_temp.Text = "Temp: " + temperature.ToString() + "°C";
+
+            cpu_usage.Text = "Usage: " + Math.Round(cpuCounter.NextValue(), MidpointRounding.ToEven) + "%";
 
             //Resets the timer
             Timer timer  = sender as Timer;
@@ -57,16 +64,17 @@ namespace PcComponentnsStats
             //Will set the text to the temperatures
             cpu_temp.Text = "Temp: " + temperature.ToString() + "°C";
 
-            //Thing to get the processor name (Idk what it does I just copied it.)
-            string cpuName = String.Empty;
             ManagementClass mc = new ManagementClass("win32_processor");
             ManagementObjectCollection managCollec = mc.GetInstances();
             foreach (ManagementObject managObj in managCollec)
             {
-                cpuName = managObj.Properties["Name"].Value.ToString();
+                //Thing to get the processor name (Idk what it does I just copied it.)
+                string cpuName = managObj.Properties["Name"].Value.ToString();
                 cpu_name.Text = "Name: " + cpuName;
                 break;
             }
+            //Gets cpu usage in precentage
+            cpu_usage.Text = "Usage: " + Math.Round(cpuCounter.NextValue(), MidpointRounding.ToEven) + "%";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -78,6 +86,19 @@ namespace PcComponentnsStats
         {
             this.TopMost = true;
             timer2.Interval = 1000;
+        }
+
+        //Shows gpu stats
+        private void next_gpu_Click(object sender, EventArgs e)
+        {
+            gpu.Visible = true;
+            CPU_info.Visible = false;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            gpu.Visible=false;
+            CPU_info.Visible=true;
         }
     }
 }
