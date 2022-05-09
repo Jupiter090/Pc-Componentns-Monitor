@@ -17,7 +17,7 @@ namespace PcComponentnsStats
     public partial class Form1 : Form
     {
         PerformanceCounter cpuCounter;
-
+        private bool sendMessages = Properties.Settings.Default.sendMessage;
         private bool sendedWarning_cpu = false;
         public Form1()
         {
@@ -53,7 +53,7 @@ namespace PcComponentnsStats
                     sendedWarning_cpu = false;
                 }
                 //When cpu temps get too high it will send a warning
-                if(temperature > 75 && sendedWarning_cpu == false) 
+                if(temperature > 75 && !sendedWarning_cpu && sendMessages) 
                 {
                     new ToastContentBuilder()
                         .AddText("Warning!")
@@ -82,10 +82,10 @@ namespace PcComponentnsStats
             this.TopMost = true;
             this.ShowInTaskbar = false;
 
-            double temperature = 0;
+            checkBox1.Checked = Properties.Settings.Default.sendMessage;
 
-            
 
+            double temperature = 0;  
             //Create new ManagementObjectSearcher
             ManagementObjectSearcher searcher = new ManagementObjectSearcher(@"root\WMI", "SELECT * FROM MSAcpi_ThermalZoneTemperature");
             foreach (ManagementObject obj in searcher.Get())
@@ -135,6 +135,22 @@ namespace PcComponentnsStats
         {
             gpu.Visible=false;
             CPU_info.Visible=true;
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox checkBox = sender as CheckBox;
+            if (checkBox.Checked)
+            {
+                Properties.Settings.Default.sendMessage = true;
+                sendMessages = true;
+                Properties.Settings.Default.Save();
+            }else if (!checkBox.Checked)
+            {
+                Properties.Settings.Default.sendMessage = false;
+                sendMessages = false;
+                Properties.Settings.Default.Save();
+            }
         }
     }
 }

@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PcComponentnsStats.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="sendMessage" Type="System.Boolean" Scope="Application">
+    <Setting Name="sendMessage" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>

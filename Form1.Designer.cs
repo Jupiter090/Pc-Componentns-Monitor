@@ -39,13 +39,14 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.CPU_info = new System.Windows.Forms.Panel();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cpu_usage = new System.Windows.Forms.Label();
             this.next_gpu = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.gpu_name = new System.Windows.Forms.Label();
             this.gpu_temp = new System.Windows.Forms.Label();
             this.gpu = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
-            this.cpu_usage = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.CPU_info.SuspendLayout();
             this.gpu.SuspendLayout();
@@ -131,6 +132,7 @@
             // 
             // CPU_info
             // 
+            this.CPU_info.Controls.Add(this.checkBox1);
             this.CPU_info.Controls.Add(this.cpu_usage);
             this.CPU_info.Controls.Add(this.next_gpu);
             this.CPU_info.Controls.Add(this.cpu_temp);
@@ -140,6 +142,29 @@
             this.CPU_info.Name = "CPU_info";
             this.CPU_info.Size = new System.Drawing.Size(526, 90);
             this.CPU_info.TabIndex = 6;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(382, 60);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(128, 20);
+            this.checkBox1.TabIndex = 5;
+            this.checkBox1.Text = "Send messages";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // cpu_usage
+            // 
+            this.cpu_usage.AutoSize = true;
+            this.cpu_usage.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.cpu_usage.Location = new System.Drawing.Point(15, 51);
+            this.cpu_usage.Name = "cpu_usage";
+            this.cpu_usage.Size = new System.Drawing.Size(76, 16);
+            this.cpu_usage.TabIndex = 4;
+            this.cpu_usage.Text = "{cpu_temp}";
             // 
             // next_gpu
             // 
@@ -211,16 +236,6 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // cpu_usage
-            // 
-            this.cpu_usage.AutoSize = true;
-            this.cpu_usage.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.cpu_usage.Location = new System.Drawing.Point(15, 51);
-            this.cpu_usage.Name = "cpu_usage";
-            this.cpu_usage.Size = new System.Drawing.Size(76, 16);
-            this.cpu_usage.TabIndex = 4;
-            this.cpu_usage.Text = "{cpu_temp}";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -263,6 +278,7 @@
         private System.Windows.Forms.Panel gpu;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label cpu_usage;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 
