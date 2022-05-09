@@ -14,12 +14,11 @@ using Microsoft.Toolkit.Uwp.Notifications;
 
 namespace PcComponentnsStats
 {
-    public partial class Form1 : Form
+    public partial class App : Form
     {
-        PerformanceCounter cpuCounter;
-        private bool sendMessages = Properties.Settings.Default.sendMessage;
+        PerformanceCounter cpuCounter; 
         private bool sendedWarning_cpu = false;
-        public Form1()
+        public App()
         {
             InitializeComponent();
             cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
@@ -53,7 +52,8 @@ namespace PcComponentnsStats
                     sendedWarning_cpu = false;
                 }
                 //When cpu temps get too high it will send a warning
-                if(temperature > 75 && !sendedWarning_cpu && sendMessages) 
+                Properties.Settings.Default.Reload();
+                if(temperature > 75 && !sendedWarning_cpu && Properties.Settings.Default.sendMessage) 
                 {
                     new ToastContentBuilder()
                         .AddText("Warning!")
@@ -81,8 +81,6 @@ namespace PcComponentnsStats
                                       workingArea.Bottom - Size.Height);
             this.TopMost = true;
             this.ShowInTaskbar = false;
-
-            checkBox1.Checked = Properties.Settings.Default.sendMessage;
 
 
             double temperature = 0;  
@@ -137,20 +135,15 @@ namespace PcComponentnsStats
             CPU_info.Visible=true;
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void CPU_info_Paint(object sender, PaintEventArgs e)
         {
-            CheckBox checkBox = sender as CheckBox;
-            if (checkBox.Checked)
-            {
-                Properties.Settings.Default.sendMessage = true;
-                sendMessages = true;
-                Properties.Settings.Default.Save();
-            }else if (!checkBox.Checked)
-            {
-                Properties.Settings.Default.sendMessage = false;
-                sendMessages = false;
-                Properties.Settings.Default.Save();
-            }
+
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            Form form = new Settings();
+            form.Show();
         }
     }
 }

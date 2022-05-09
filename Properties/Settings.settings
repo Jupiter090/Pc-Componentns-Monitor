@@ -5,5 +5,11 @@
     <Setting Name="sendMessage" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="email" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">jupiter909990@gmail.com</Value>
+    </Setting>
+    <Setting Name="password" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">JasomMatko1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

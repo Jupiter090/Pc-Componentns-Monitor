@@ -1,6 +1,6 @@
 ﻿namespace PcComponentnsStats
 {
-    partial class Form1
+    partial class App
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(App));
             this.cpu_name = new System.Windows.Forms.Label();
             this.cpu_temp = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -39,7 +39,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.CPU_info = new System.Windows.Forms.Panel();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.cpu_usage = new System.Windows.Forms.Label();
             this.next_gpu = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,6 +46,7 @@
             this.gpu_temp = new System.Windows.Forms.Label();
             this.gpu = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
+            this.btnSettings = new PcComponentnsStats.resources.customButtons();
             this.panel1.SuspendLayout();
             this.CPU_info.SuspendLayout();
             this.gpu.SuspendLayout();
@@ -132,7 +132,7 @@
             // 
             // CPU_info
             // 
-            this.CPU_info.Controls.Add(this.checkBox1);
+            this.CPU_info.Controls.Add(this.btnSettings);
             this.CPU_info.Controls.Add(this.cpu_usage);
             this.CPU_info.Controls.Add(this.next_gpu);
             this.CPU_info.Controls.Add(this.cpu_temp);
@@ -142,19 +142,7 @@
             this.CPU_info.Name = "CPU_info";
             this.CPU_info.Size = new System.Drawing.Size(526, 90);
             this.CPU_info.TabIndex = 6;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(382, 60);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(128, 20);
-            this.checkBox1.TabIndex = 5;
-            this.checkBox1.Text = "Send messages";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.CPU_info.Paint += new System.Windows.Forms.PaintEventHandler(this.CPU_info_Paint);
             // 
             // cpu_usage
             // 
@@ -236,7 +224,27 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Form1
+            // btnSettings
+            // 
+            this.btnSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnSettings.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnSettings.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnSettings.BorderRadius = 5;
+            this.btnSettings.BorderSize = 0;
+            this.btnSettings.FlatAppearance.BorderSize = 0;
+            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSettings.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnSettings.ForeColor = System.Drawing.Color.White;
+            this.btnSettings.Location = new System.Drawing.Point(398, 51);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(122, 36);
+            this.btnSettings.TabIndex = 6;
+            this.btnSettings.Text = "Settings";
+            this.btnSettings.TextdColor = System.Drawing.Color.White;
+            this.btnSettings.UseVisualStyleBackColor = false;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
+            // 
+            // App
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -246,7 +254,7 @@
             this.Controls.Add(this.CPU_info);
             this.Controls.Add(this.gpu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.Name = "App";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -278,7 +286,7 @@
         private System.Windows.Forms.Panel gpu;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label cpu_usage;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private resources.customButtons btnSettings;
     }
 }
 

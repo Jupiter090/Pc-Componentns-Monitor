@@ -34,5 +34,23 @@ namespace PcComponentnsStats.Properties {
                 this["sendMessage"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("jupiter909990@gmail.com")]
+        public string email {
+            get {
+                return ((string)(this["email"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("JasomMatko1")]
+        public string password {
+            get {
+                return ((string)(this["password"]));
+            }
+        }
     }
 }
