@@ -10,12 +10,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Microsoft.Toolkit.Uwp.Notifications;
 
 namespace PcComponentnsStats
 {
     public partial class Form1 : Form
     {
         PerformanceCounter cpuCounter;
+
+        private bool sendedWarning_cpu = false;
         public Form1()
         {
             InitializeComponent();
@@ -33,6 +36,31 @@ namespace PcComponentnsStats
                 //Gets the cpu temp and converts it to °C
                 temperature = Convert.ToDouble(obj["CurrentTemperature"].ToString());
                 temperature = (temperature - 2732) / 10.0;
+                //Chanegs color of text dependign on temp
+                if (temperature > 40 && temperature < 50)
+                {
+                    cpu_temp.ForeColor = Color.Orange;
+                    sendedWarning_cpu = false;
+                }
+                else if (temperature > 50 && temperature < 75) cpu_temp.ForeColor = Color.DarkOrange;
+                else if (temperature > 75)
+                {
+                    cpu_temp.ForeColor = Color.Red;
+                }
+                else if (temperature < 40)
+                {
+                    cpu_temp.ForeColor = Color.Black;
+                    sendedWarning_cpu = false;
+                }
+                //When cpu temps get too high it will send a warning
+                if(temperature > 75 && sendedWarning_cpu == false) 
+                {
+                    new ToastContentBuilder()
+                        .AddText("Warning!")
+                        .AddText("Your cpu temps are getting high!")
+                        .Show();
+                    sendedWarning_cpu = true;
+                }
             }
             //Will set the text to the temperatures
             cpu_temp.Text = "Temp: " + temperature.ToString() + "°C";
@@ -46,13 +74,18 @@ namespace PcComponentnsStats
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //Sets the styles
             this.FormBorderStyle = FormBorderStyle.None;
             Rectangle workingArea = Screen.GetWorkingArea(this);
             this.Location = new Point(workingArea.Right - Size.Width,
                                       workingArea.Bottom - Size.Height);
             this.TopMost = true;
+            this.ShowInTaskbar = false;
 
             double temperature = 0;
+
+            
+
             //Create new ManagementObjectSearcher
             ManagementObjectSearcher searcher = new ManagementObjectSearcher(@"root\WMI", "SELECT * FROM MSAcpi_ThermalZoneTemperature");
             foreach (ManagementObject obj in searcher.Get())
@@ -60,6 +93,9 @@ namespace PcComponentnsStats
                 //Gets the cpu temp and converts it to °C
                 temperature = Convert.ToDouble(obj["CurrentTemperature"].ToString());
                 temperature = (temperature - 2732) / 10.0;
+                if (temperature > 40) cpu_temp.ForeColor = Color.Orange;
+                else if (temperature > 50 && temperature < 65) cpu_temp.ForeColor = Color.DarkOrange;
+                else if (temperature < 40) cpu_temp.ForeColor = Color.Black;
             }
             //Will set the text to the temperatures
             cpu_temp.Text = "Temp: " + temperature.ToString() + "°C";
