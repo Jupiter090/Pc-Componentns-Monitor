@@ -9,10 +9,6 @@
 *.user
 *.userosscache
 *.sln.docstates
-Settings.settings
-Settings.Designer.cs
-/Properties/Settings.settings
-/Properties/Settings.Designer.cs
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
