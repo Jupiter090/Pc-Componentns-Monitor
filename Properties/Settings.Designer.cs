@@ -49,13 +49,13 @@ namespace PcComponentnsStats.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Haoj {
+        [global::System.Configuration.DefaultSettingValueAttribute("Right, Bottom")]
+        public string Position {
             get {
-                return ((string)(this["Haoj"]));
+                return ((string)(this["Position"]));
             }
             set {
-                this["Haoj"] = value;
+                this["Position"] = value;
             }
         }
     }

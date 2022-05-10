@@ -29,7 +29,7 @@ namespace PcComponentnsStats
 
             if (Properties.Settings.Default.Darkmode)
             {
-                this.BackColor = Color.FromArgb(92, 92, 92);
+                this.BackColor = Color.FromArgb(41, 41, 41);
                 this.ForeColor = Color.White;
             }
 
@@ -57,7 +57,7 @@ namespace PcComponentnsStats
             Properties.Settings.Default.Save();
             if (Properties.Settings.Default.Darkmode)
             {
-                this.BackColor = Color.FromArgb(92, 92, 92);
+                this.BackColor = Color.FromArgb(41, 41, 41);
                 this.ForeColor = Color.White;
             }
             else
@@ -65,6 +65,20 @@ namespace PcComponentnsStats
                 this.BackColor = Color.White;
                 this.ForeColor = Color.Black;
             }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = sender as ComboBox;
+            btnApply.Visible = true;
+            Properties.Settings.Default.Position = comboBox.Text;
+            Properties.Settings.Default.Save();
+        }
+
+        private void btnApply_Click(object sender, EventArgs e)
+        {
+            App.reason = "apply";
+            this.Close();
         }
     }
 }

@@ -31,8 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
             this.txtSettings = new System.Windows.Forms.Label();
             this.chbxSendNotifactionns = new System.Windows.Forms.CheckBox();
-            this.btnSettings = new PcComponentnsStats.resources.customButtons();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.toolStripDropDown1 = new System.Windows.Forms.ToolStripDropDown();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnApply = new PcComponentnsStats.resources.customButtons();
+            this.btnSettings = new PcComponentnsStats.resources.customButtons();
             this.SuspendLayout();
             // 
             // txtSettings
@@ -57,6 +61,71 @@
             this.chbxSendNotifactionns.UseVisualStyleBackColor = true;
             this.chbxSendNotifactionns.CheckedChanged += new System.EventHandler(this.chbxSendNotifactionns_CheckedChanged);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.checkBox1.Location = new System.Drawing.Point(21, 105);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(153, 33);
+            this.checkBox1.TabIndex = 17;
+            this.checkBox1.Text = "Dark mode";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // toolStripDropDown1
+            // 
+            this.toolStripDropDown1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStripDropDown1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
+            this.toolStripDropDown1.Name = "toolStripDropDown1";
+            this.toolStripDropDown1.Size = new System.Drawing.Size(2, 4);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Right, Bottom",
+            "Right, Top",
+            "Left, Bottom",
+            "Left, Top"});
+            this.comboBox1.Location = new System.Drawing.Point(21, 172);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(219, 24);
+            this.comboBox1.TabIndex = 19;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(12, 138);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 31);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Position:";
+            // 
+            // btnApply
+            // 
+            this.btnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnApply.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnApply.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnApply.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnApply.BorderRadius = 5;
+            this.btnApply.BorderSize = 0;
+            this.btnApply.FlatAppearance.BorderSize = 0;
+            this.btnApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnApply.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnApply.ForeColor = System.Drawing.Color.White;
+            this.btnApply.Location = new System.Drawing.Point(431, 298);
+            this.btnApply.Name = "btnApply";
+            this.btnApply.Size = new System.Drawing.Size(214, 37);
+            this.btnApply.TabIndex = 21;
+            this.btnApply.Text = "Apply and Close";
+            this.btnApply.TextdColor = System.Drawing.Color.White;
+            this.btnApply.UseVisualStyleBackColor = false;
+            this.btnApply.Visible = false;
+            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
+            // 
             // btnSettings
             // 
             this.btnSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -78,23 +147,14 @@
             this.btnSettings.UseVisualStyleBackColor = false;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBox1.Location = new System.Drawing.Point(21, 105);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(153, 33);
-            this.checkBox1.TabIndex = 17;
-            this.checkBox1.Text = "Dark mode";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 347);
+            this.Controls.Add(this.btnApply);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.chbxSendNotifactionns);
@@ -114,5 +174,9 @@
         private System.Windows.Forms.CheckBox chbxSendNotifactionns;
         private resources.customButtons btnSettings;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.ToolStripDropDown toolStripDropDown1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label1;
+        private resources.customButtons btnApply;
     }
 }

@@ -8,8 +8,8 @@
     <Setting Name="Darkmode" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="Haoj" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="Position" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Right, Bottom</Value>
     </Setting>
   </Settings>
 </SettingsFile>

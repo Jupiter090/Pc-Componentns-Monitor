@@ -134,6 +134,7 @@
             this.CPU_info.Name = "CPU_info";
             this.CPU_info.Size = new System.Drawing.Size(526, 90);
             this.CPU_info.TabIndex = 6;
+            this.CPU_info.Paint += new System.Windows.Forms.PaintEventHandler(this.CPU_info_Paint);
             // 
             // btnSettings
             // 

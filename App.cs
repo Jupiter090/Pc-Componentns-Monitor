@@ -21,6 +21,7 @@ namespace PcComponentnsStats
         private bool sendedWarning_cpu = false;
         private bool sendedWarning_cpu_usage = false;
         public static bool canBeTheTopMost = true;
+        public static string reason = string.Empty;
         public App()
         {
             InitializeComponent();
@@ -110,12 +111,12 @@ namespace PcComponentnsStats
             //Dark mode
             if (Properties.Settings.Default.Darkmode)
             {
-                this.BackColor = Color.FromArgb(92, 92, 92);
+                this.BackColor = Color.FromArgb(41, 41, 41);
                 this.ForeColor = Color.White;
                 panelName.ForeColor = Color.White;
-                panelName.BackColor = Color.FromArgb(75, 75, 75);
-                btnExit.BackColor = Color.FromArgb(75, 75, 75);
-                btnExit.FlatAppearance.BorderColor = Color.FromArgb(75, 75, 75); 
+                panelName.BackColor = Color.FromArgb(55, 55, 55);
+                btnExit.BackColor = Color.FromArgb(55, 55, 55);
+                btnExit.FlatAppearance.BorderColor = Color.FromArgb(55, 55, 55); 
             }
             //Sets the styles
             this.FormBorderStyle = FormBorderStyle.None;
@@ -168,12 +169,12 @@ namespace PcComponentnsStats
             if (Properties.Settings.Default.Darkmode)
             {
                 
-                this.BackColor = Color.FromArgb(92, 92, 92);
+                this.BackColor = Color.FromArgb(41, 41, 41);
                 this.ForeColor = Color.White;
                 panelName.ForeColor = Color.White;
-                panelName.BackColor = Color.FromArgb(75, 75, 75);
-                btnExit.BackColor = Color.FromArgb(75, 75, 75);
-                btnExit.FlatAppearance.BorderColor = Color.FromArgb(75, 75, 75);
+                panelName.BackColor = Color.FromArgb(55, 55, 55);
+                btnExit.BackColor = Color.FromArgb(55, 55, 55);
+                btnExit.FlatAppearance.BorderColor = Color.FromArgb(55, 55, 55);
                 if (this.cpu_temp.ForeColor == Color.Black)
                 {
                     cpu_temp.ForeColor = Color.White;
@@ -216,6 +217,37 @@ namespace PcComponentnsStats
         private void SettingsExit(object sender, EventArgs e)
         {
             canBeTheTopMost = true;
+            if(reason != string.Empty && reason == "apply")
+            {
+                //reload settings
+                Properties.Settings.Default.Reload();
+                //Sets forms position to one of the corners
+                Rectangle workingArea = Screen.GetWorkingArea(this);
+                Console.WriteLine(Properties.Settings.Default.Position);
+                switch (Properties.Settings.Default.Position)
+                {
+                    case "Right, Bottom":
+                        this.Location = new Point(workingArea.Right - Size.Width,
+                                      workingArea.Bottom - Size.Height);
+                        break;
+                    case "Right, Top":
+                        this.Location = new Point(Screen.PrimaryScreen.Bounds.Right - this.Width, 0);
+                        break;
+                    case "Left, Bottom":
+                        int y = Screen.PrimaryScreen.Bounds.Bottom - this.Height;
+                        this.Location = new Point(0, y);
+                        break;
+                    case "Left, Top":
+                        this.Location = new Point(0, 0);
+                        break;
+                }
+                reason = string.Empty;
+            }
+        }
+
+        private void CPU_info_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
