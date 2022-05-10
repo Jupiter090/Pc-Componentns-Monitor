@@ -35,15 +35,6 @@ namespace PcComponentnsStats.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("jupiter909990@gmail.com")]
-        public string email {
-            get {
-                return ((string)(this["email"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
@@ -53,15 +44,6 @@ namespace PcComponentnsStats.Properties {
             }
             set {
                 this["Darkmode"] = value;
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("MT3obVe4AoqTVaSMBuiceg==")]
-        public string Dfhgf4578hfg {
-            get {
-                return ((string)(this["Dfhgf4578hfg"]));
             }
         }
         
