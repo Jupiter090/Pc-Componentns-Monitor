@@ -64,5 +64,17 @@ namespace PcComponentnsStats.Properties {
                 return ((string)(this["Dfhgf4578hfg"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string AhojXDS {
+            get {
+                return ((string)(this["AhojXDS"]));
+            }
+            set {
+                this["AhojXDS"] = value;
+            }
+        }
     }
 }
