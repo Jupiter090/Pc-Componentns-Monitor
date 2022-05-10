@@ -19,6 +19,7 @@ namespace PcComponentnsStats
     {
         PerformanceCounter cpuCounter; 
         private bool sendedWarning_cpu = false;
+        private bool sendedWarning_cpu_usage = false;
         public static bool canBeTheTopMost = true;
         public App()
         {
@@ -50,7 +51,7 @@ namespace PcComponentnsStats
                 }
                 else if (temperature < 40)
                 {
-                    cpu_temp.ForeColor = Color.Black;
+                    cpu_temp.ForeColor = this.ForeColor;
                     sendedWarning_cpu = false;
                 }
                 //When cpu temps get too high it will send a warning
@@ -67,7 +68,37 @@ namespace PcComponentnsStats
             //Will set the text to the temperatures
             cpu_temp.Text = "Temp: " + temperature.ToString() + "°C";
 
-            cpu_usage.Text = "Usage: " + Math.Round(cpuCounter.NextValue(), MidpointRounding.ToEven) + "%";
+            float cpu_usage_f = cpuCounter.NextValue();
+            cpu_usage.Text = "Usage: " + Math.Round(cpu_usage_f) + "%";
+            //Changes color of text depending on cpu usage
+            if (Math.Round(cpu_usage_f) < 25f)
+            {
+                cpu_usage.ForeColor = this.ForeColor;
+                sendedWarning_cpu_usage = false;
+            }
+            else if (Math.Round(cpu_usage_f) > 25f && Math.Round(cpu_usage_f) < 50f)
+            {
+                cpu_usage.ForeColor = Color.Orange;
+                sendedWarning_cpu_usage = false;
+    }
+            else if (Math.Round(cpu_usage_f) > 50f && Math.Round(cpu_usage_f) < 75f)
+            {
+                cpu_usage.ForeColor = Color.DarkOrange;
+            }
+            else if (Math.Round(cpu_usage_f) > 75f && Math.Round(cpu_usage_f) < 101f)
+            {
+                cpu_usage.ForeColor = Color.Red;
+            }
+
+            //Sends warning message
+            Properties.Settings.Default.Reload();
+            if(!sendedWarning_cpu_usage && (Math.Round(cpu_usage_f)) > 75f && Properties.Settings.Default.sendMessage){
+                new ToastContentBuilder()
+                        .AddText("Warning!")
+                        .AddText("Your cpu usage is getting high!")
+                        .Show();
+                sendedWarning_cpu_usage = true;
+            }
 
             //Resets the timer
             Timer timer  = sender as Timer;
@@ -133,43 +164,46 @@ namespace PcComponentnsStats
             //Sets to the top most
             if(canBeTheTopMost) this.TopMost = true;
             //Dark mode
+            Properties.Settings.Default.Reload();
             if (Properties.Settings.Default.Darkmode)
             {
+                
                 this.BackColor = Color.FromArgb(92, 92, 92);
                 this.ForeColor = Color.White;
                 panelName.ForeColor = Color.White;
                 panelName.BackColor = Color.FromArgb(75, 75, 75);
                 btnExit.BackColor = Color.FromArgb(75, 75, 75);
                 btnExit.FlatAppearance.BorderColor = Color.FromArgb(75, 75, 75);
+                if (this.cpu_temp.ForeColor == Color.Black)
+                {
+                    cpu_temp.ForeColor = Color.White;
+                }
+                if(this.cpu_usage.ForeColor == Color.Black)
+                {
+                    cpu_usage.ForeColor= Color.White;
+                }
+                
+
             }
             else
             {
+                
                 this.BackColor = Color.White;
                 this.ForeColor = Color.Black;
                 panelName.ForeColor = Color.Black;
                 panelName.BackColor = Color.FromArgb(224, 224, 224);
                 btnExit.BackColor = Color.FromArgb(224, 224, 224);
                 btnExit.FlatAppearance.BorderColor = Color.FromArgb(224, 224, 224);
+                if (this.cpu_temp.ForeColor == Color.White)
+                {
+                    cpu_temp.ForeColor = Color.Black;
+                }
+                if (this.cpu_usage.ForeColor == Color.White)
+                {
+                    cpu_usage.ForeColor = Color.Black;
+                }
             }
             timer2.Interval = 1000;
-        }
-
-        //Shows gpu stats
-        private void next_gpu_Click(object sender, EventArgs e)
-        {
-            gpu.Visible = true;
-            CPU_info.Visible = false;
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            gpu.Visible=false;
-            CPU_info.Visible=true;
-        }
-
-        private void CPU_info_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void btnSettings_Click(object sender, EventArgs e)

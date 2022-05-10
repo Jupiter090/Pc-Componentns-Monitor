@@ -110,6 +110,7 @@
     <Compile Include="Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings1.cs" />
     <EmbeddedResource Include="customButtons.resx">
       <DependentUpon>customButtons.cs</DependentUpon>
     </EmbeddedResource>
