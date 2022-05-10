@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Management;
+
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,6 +19,7 @@ namespace PcComponentnsStats
     {
         PerformanceCounter cpuCounter; 
         private bool sendedWarning_cpu = false;
+        public static bool canBeTheTopMost = true;
         public App()
         {
             InitializeComponent();
@@ -74,6 +76,16 @@ namespace PcComponentnsStats
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //Dark mode
+            if (Properties.Settings.Default.Darkmode)
+            {
+                this.BackColor = Color.FromArgb(92, 92, 92);
+                this.ForeColor = Color.White;
+                panelName.ForeColor = Color.White;
+                panelName.BackColor = Color.FromArgb(75, 75, 75);
+                btnExit.BackColor = Color.FromArgb(75, 75, 75);
+                btnExit.FlatAppearance.BorderColor = Color.FromArgb(75, 75, 75); 
+            }
             //Sets the styles
             this.FormBorderStyle = FormBorderStyle.None;
             Rectangle workingArea = Screen.GetWorkingArea(this);
@@ -118,7 +130,27 @@ namespace PcComponentnsStats
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            this.TopMost = true;
+            //Sets to the top most
+            if(canBeTheTopMost) this.TopMost = true;
+            //Dark mode
+            if (Properties.Settings.Default.Darkmode)
+            {
+                this.BackColor = Color.FromArgb(92, 92, 92);
+                this.ForeColor = Color.White;
+                panelName.ForeColor = Color.White;
+                panelName.BackColor = Color.FromArgb(75, 75, 75);
+                btnExit.BackColor = Color.FromArgb(75, 75, 75);
+                btnExit.FlatAppearance.BorderColor = Color.FromArgb(75, 75, 75);
+            }
+            else
+            {
+                this.BackColor = Color.White;
+                this.ForeColor = Color.Black;
+                panelName.ForeColor = Color.Black;
+                panelName.BackColor = Color.FromArgb(224, 224, 224);
+                btnExit.BackColor = Color.FromArgb(224, 224, 224);
+                btnExit.FlatAppearance.BorderColor = Color.FromArgb(224, 224, 224);
+            }
             timer2.Interval = 1000;
         }
 
@@ -144,6 +176,12 @@ namespace PcComponentnsStats
         {
             Form form = new Settings();
             form.Show();
+            canBeTheTopMost = false;
+            form.FormClosing += new FormClosingEventHandler(SettingsExit);
+        }
+        private void SettingsExit(object sender, EventArgs e)
+        {
+            canBeTheTopMost = true;
         }
     }
 }
