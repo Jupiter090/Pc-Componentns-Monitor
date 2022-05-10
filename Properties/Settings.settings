@@ -14,5 +14,8 @@
     <Setting Name="Darkmode" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="ssds" Type="System.String" Scope="User">
+      <Value Profile="(Default)">fdsf</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

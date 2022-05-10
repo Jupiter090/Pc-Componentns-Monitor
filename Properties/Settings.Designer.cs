@@ -64,5 +64,17 @@ namespace PcComponentnsStats.Properties {
                 this["Darkmode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("fdsf")]
+        public string ssds {
+            get {
+                return ((string)(this["ssds"]));
+            }
+            set {
+                this["ssds"] = value;
+            }
+        }
     }
 }
