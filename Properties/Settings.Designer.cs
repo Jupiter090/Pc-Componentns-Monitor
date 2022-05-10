@@ -44,15 +44,6 @@ namespace PcComponentnsStats.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("MT3obVe4AoqTVaSMBuiceg==")]
-        public string Dfhgf4578hfg {
-            get {
-                return ((string)(this["Dfhgf4578hfg"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
@@ -65,15 +56,12 @@ namespace PcComponentnsStats.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("fdsf")]
-        public string ssds {
+        [global::System.Configuration.DefaultSettingValueAttribute("MT3obVe4AoqTVaSMBuiceg==")]
+        public string Dfhgf4578hfg {
             get {
-                return ((string)(this["ssds"]));
-            }
-            set {
-                this["ssds"] = value;
+                return ((string)(this["Dfhgf4578hfg"]));
             }
         }
     }
