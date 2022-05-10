@@ -8,9 +8,6 @@
     <Setting Name="email" Type="System.String" Scope="Application">
       <Value Profile="(Default)">jupiter909990@gmail.com</Value>
     </Setting>
-    <Setting Name="Dfhgf4578hfg" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">MT3obVe4AoqTVaSMBuiceg==</Value>
-    </Setting>
     <Setting Name="Darkmode" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
