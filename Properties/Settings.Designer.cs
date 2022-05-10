@@ -68,12 +68,12 @@ namespace PcComponentnsStats.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string sdfsdfsdf {
+        public string sdfsdfsdfdfsdf {
             get {
-                return ((string)(this["sdfsdfsdf"]));
+                return ((string)(this["sdfsdfsdfdfsdf"]));
             }
             set {
-                this["sdfsdfsdf"] = value;
+                this["sdfsdfsdfdfsdf"] = value;
             }
         }
     }
