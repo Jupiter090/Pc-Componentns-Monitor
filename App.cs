@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Management;
+
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,19 +17,15 @@ namespace PcComponentnsStats
 {
     public partial class App : Form
     {
-        PerformanceCounter cpuCounter;
-        PerformanceCounter ramCounter;
-
+        PerformanceCounter cpuCounter; 
         private bool sendedWarning_cpu = false;
         private bool sendedWarning_cpu_usage = false;
-        private bool sendedWarning_ram_usage = false;
         public static bool canBeTheTopMost = true;
         public static string reason = string.Empty;
         public App()
         {
             InitializeComponent();
             cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
-            ramCounter = new PerformanceCounter("Memory", "% Committed Bytes In Use");
         }
 
 
@@ -43,8 +40,21 @@ namespace PcComponentnsStats
                 temperature = Convert.ToDouble(obj["CurrentTemperature"].ToString());
                 temperature = (temperature - 2732) / 10.0;
                 //Chanegs color of text dependign on temp
-                ChangeCPUTempColor(temperature);
-
+                if (temperature > 40 && temperature < 50)
+                {
+                    cpu_temp.ForeColor = Color.Orange;
+                    sendedWarning_cpu = false;
+                }
+                else if (temperature > 50 && temperature < 75) cpu_temp.ForeColor = Color.DarkOrange;
+                else if (temperature > 75)
+                {
+                    cpu_temp.ForeColor = Color.Red;
+                }
+                else if (temperature < 40)
+                {
+                    cpu_temp.ForeColor = this.ForeColor;
+                    sendedWarning_cpu = false;
+                }
                 //When cpu temps get too high it will send a warning
                 Properties.Settings.Default.Reload();
                 if(temperature > 75 && !sendedWarning_cpu && Properties.Settings.Default.sendMessage) 
@@ -62,7 +72,24 @@ namespace PcComponentnsStats
             float cpu_usage_f = cpuCounter.NextValue();
             cpu_usage.Text = "Usage: " + Math.Round(cpu_usage_f) + "%";
             //Changes color of text depending on cpu usage
-            ChangeCPUUsageColor(cpu_usage_f);
+            if (Math.Round(cpu_usage_f) < 25f)
+            {
+                cpu_usage.ForeColor = this.ForeColor;
+                sendedWarning_cpu_usage = false;
+            }
+            else if (Math.Round(cpu_usage_f) > 25f && Math.Round(cpu_usage_f) < 50f)
+            {
+                cpu_usage.ForeColor = Color.Orange;
+                sendedWarning_cpu_usage = false;
+    }
+            else if (Math.Round(cpu_usage_f) > 50f && Math.Round(cpu_usage_f) < 75f)
+            {
+                cpu_usage.ForeColor = Color.DarkOrange;
+            }
+            else if (Math.Round(cpu_usage_f) > 75f && Math.Round(cpu_usage_f) < 101f)
+            {
+                cpu_usage.ForeColor = Color.Red;
+            }
 
             //Sends warning message
             Properties.Settings.Default.Reload();
@@ -73,11 +100,6 @@ namespace PcComponentnsStats
                         .Show();
                 sendedWarning_cpu_usage = true;
             }
-
-            //Updates ram usage
-            ram_usage.Text = Math.Round(ramCounter.NextValue()).ToString() + "%";
-            double ram_usage_f = Math.Round(ramCounter.NextValue());
-            ChangeRAMUSageColor(ram_usage_f);
 
             //Resets the timer
             Timer timer  = sender as Timer;
@@ -96,7 +118,6 @@ namespace PcComponentnsStats
                 btnExit.BackColor = Color.FromArgb(55, 55, 55);
                 btnExit.FlatAppearance.BorderColor = Color.FromArgb(55, 55, 55); 
             }
-
             //Sets the styles
             this.FormBorderStyle = FormBorderStyle.None;
             Rectangle workingArea = Screen.GetWorkingArea(this);
@@ -114,7 +135,9 @@ namespace PcComponentnsStats
                 //Gets the cpu temp and converts it to °C
                 temperature = Convert.ToDouble(obj["CurrentTemperature"].ToString());
                 temperature = (temperature - 2732) / 10.0;
-                ChangeCPUTempColor(temperature);
+                if (temperature > 40) cpu_temp.ForeColor = Color.Orange;
+                else if (temperature > 50 && temperature < 65) cpu_temp.ForeColor = Color.DarkOrange;
+                else if (temperature < 40) cpu_temp.ForeColor = Color.Black;
             }
             //Will set the text to the temperatures
             cpu_temp.Text = "Temp: " + temperature.ToString() + "°C";
@@ -130,18 +153,6 @@ namespace PcComponentnsStats
             }
             //Gets cpu usage in precentage
             cpu_usage.Text = "Usage: " + Math.Round(cpuCounter.NextValue(), MidpointRounding.ToEven) + "%";
-
-            //Gets ram manufacturer
-            ManagementObjectSearcher myRamObject = new ManagementObjectSearcher("SELECT * FROM Win32_PhysicalMemory");
-            
-            foreach (ManagementObject obj in myRamObject.Get())
-            {
-                ram_name.Text = "Manufacturer: " + obj["Manufacturer"].ToString();
-            }
-
-            //Gets ram usage
-            ram_usage.Text = Math.Round(ramCounter.NextValue()).ToString() + "%";
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -193,11 +204,9 @@ namespace PcComponentnsStats
                     cpu_usage.ForeColor = Color.Black;
                 }
             }
-            //Resets timer
             timer2.Interval = 1000;
         }
 
-        //Settings
         private void btnSettings_Click(object sender, EventArgs e)
         {
             Form form = new Settings();
@@ -205,16 +214,6 @@ namespace PcComponentnsStats
             canBeTheTopMost = false;
             form.FormClosing += new FormClosingEventHandler(SettingsExit);
         }
-
-
-        private void customButtons3_Click(object sender, EventArgs e)
-        {
-            Form form = new Settings();
-            form.Show();
-            canBeTheTopMost = false;
-            form.FormClosing += new FormClosingEventHandler(SettingsExit);
-        }
-        //When user exits the settings
         private void SettingsExit(object sender, EventArgs e)
         {
             canBeTheTopMost = true;
@@ -224,6 +223,7 @@ namespace PcComponentnsStats
                 Properties.Settings.Default.Reload();
                 //Sets forms position to one of the corners
                 Rectangle workingArea = Screen.GetWorkingArea(this);
+                Console.WriteLine(Properties.Settings.Default.Position);
                 switch (Properties.Settings.Default.Position)
                 {
                     case "Right, Bottom":
@@ -234,8 +234,8 @@ namespace PcComponentnsStats
                         this.Location = new Point(Screen.PrimaryScreen.Bounds.Right - this.Width, 0);
                         break;
                     case "Left, Bottom":
-                        this.Location = new Point(workingArea.Left,
-                                      workingArea.Bottom - Size.Height);
+                        int y = Screen.PrimaryScreen.Bounds.Bottom - this.Height;
+                        this.Location = new Point(0, y);
                         break;
                     case "Left, Top":
                         this.Location = new Point(0, 0);
@@ -245,76 +245,9 @@ namespace PcComponentnsStats
             }
         }
 
-        private void Next_cpu_Click(object sender, EventArgs e)
+        private void CPU_info_Paint(object sender, PaintEventArgs e)
         {
 
-        }
-
-        //Function to change text color depnding on temperature
-        private void ChangeCPUTempColor(double temperature)
-        {
-            if (temperature > 40 && temperature < 50)
-            {
-                cpu_temp.ForeColor = Color.Orange;
-                sendedWarning_cpu = false;
-            }
-            else if (temperature > 50 && temperature < 75) cpu_temp.ForeColor = Color.DarkOrange;
-            else if (temperature > 75)
-            {
-                cpu_temp.ForeColor = Color.Red;
-            }
-            else if (temperature < 40)
-            {
-                cpu_temp.ForeColor = this.ForeColor;
-                sendedWarning_cpu = false;
-            }
-        }
-        private void ChangeCPUUsageColor(float cpu_usage_f)
-        {
-            if (Math.Round(cpu_usage_f) < 25f)
-            {
-                cpu_usage.ForeColor = this.ForeColor;
-                sendedWarning_cpu_usage = false;
-            }
-            else if (Math.Round(cpu_usage_f) > 25f && Math.Round(cpu_usage_f) < 50f)
-            {
-                cpu_usage.ForeColor = Color.Orange;
-                sendedWarning_cpu_usage = false;
-            }
-            else if (Math.Round(cpu_usage_f) > 50f && Math.Round(cpu_usage_f) < 75f)
-            {
-                cpu_usage.ForeColor = Color.DarkOrange;
-            }
-            else if (Math.Round(cpu_usage_f) > 75f && Math.Round(cpu_usage_f) < 101f)
-            {
-                cpu_usage.ForeColor = Color.Red;
-            }
-
-        }
-        private void ChangeRAMUSageColor(double usage)
-        {
-            if (usage < 25f)
-            {
-                ram_usage.ForeColor = this.ForeColor;
-                sendedWarning_ram_usage = false;
-            }
-            else if (usage > 25f && usage < 50f)
-            {
-                ram_usage.ForeColor = Color.Orange;
-                sendedWarning_ram_usage = false;
-            }
-            else if (usage > 50f && usage < 75f)
-            {
-                ram_usage.ForeColor = Color.DarkOrange;
-            }
-            else if (usage > 75f && usage < 90f)
-            {
-                ram_usage.ForeColor = Color.OrangeRed;
-            }
-            else if (usage > 90f && usage <= 100f)
-            {
-                ram_usage.ForeColor = Color.Red;
-            }
         }
     }
 }
