@@ -1,4 +1,4 @@
-﻿namespace PcComponentnsStats
+﻿namespace PcComponentsMonitor
 {
     partial class App
     {
@@ -38,15 +38,17 @@
             this.panelName = new System.Windows.Forms.Panel();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.CPU_info = new System.Windows.Forms.Panel();
-            this.Next_cpu = new PcComponentnsStats.resources.customButtons();
-            this.btnSettings = new PcComponentnsStats.resources.customButtons();
+            this.Next_cpu = new PcComponentsMonitor.resources.customButtons();
+            this.btnSettings = new PcComponentsMonitor.resources.customButtons();
             this.cpu_usage = new System.Windows.Forms.Label();
             this.RAM_info = new System.Windows.Forms.Panel();
-            this.Previouse_RAM = new PcComponentnsStats.resources.customButtons();
-            this.customButtons3 = new PcComponentnsStats.resources.customButtons();
+            this.Previouse_RAM = new PcComponentsMonitor.resources.customButtons();
+            this.customButtons3 = new PcComponentsMonitor.resources.customButtons();
             this.ram_usage = new System.Windows.Forms.Label();
             this.RAM = new System.Windows.Forms.Label();
             this.ram_name = new System.Windows.Forms.Label();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.btnHide = new System.Windows.Forms.Button();
             this.panelName.SuspendLayout();
             this.CPU_info.SuspendLayout();
             this.RAM_info.SuspendLayout();
@@ -126,6 +128,7 @@
             // panelName
             // 
             this.panelName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panelName.Controls.Add(this.btnHide);
             this.panelName.Controls.Add(this.btnExit);
             this.panelName.Controls.Add(this.label2);
             this.panelName.ForeColor = System.Drawing.Color.Black;
@@ -139,21 +142,6 @@
             this.timer2.Enabled = true;
             this.timer2.Interval = 1000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
-            // CPU_info
-            // 
-            this.CPU_info.Controls.Add(this.Next_cpu);
-            this.CPU_info.Controls.Add(this.btnSettings);
-            this.CPU_info.Controls.Add(this.cpu_usage);
-            this.CPU_info.Controls.Add(this.cpu_temp);
-            this.CPU_info.Controls.Add(this.label1);
-            this.CPU_info.Controls.Add(this.CPU);
-            this.CPU_info.Controls.Add(this.cpu_name);
-            this.CPU_info.Location = new System.Drawing.Point(0, 31);
-            this.CPU_info.Name = "CPU_info";
-            this.CPU_info.Size = new System.Drawing.Size(526, 90);
-            this.CPU_info.TabIndex = 6;
-            this.CPU_info.Paint += new System.Windows.Forms.PaintEventHandler(this.CPU_info_Paint);
             // 
             // Next_cpu
             // 
@@ -174,6 +162,22 @@
             this.Next_cpu.TextdColor = System.Drawing.Color.White;
             this.Next_cpu.UseVisualStyleBackColor = false;
             this.Next_cpu.Click += new System.EventHandler(this.Next_cpu_Click);
+            // 
+            // CPU_info
+            // 
+            this.CPU_info.Controls.Add(this.Next_cpu);
+            this.CPU_info.Controls.Add(this.btnSettings);
+            this.CPU_info.Controls.Add(this.cpu_usage);
+            this.CPU_info.Controls.Add(this.cpu_temp);
+            this.CPU_info.Controls.Add(this.label1);
+            this.CPU_info.Controls.Add(this.CPU);
+            this.CPU_info.Controls.Add(this.cpu_name);
+            this.CPU_info.Location = new System.Drawing.Point(0, 31);
+            this.CPU_info.Name = "CPU_info";
+            this.CPU_info.Size = new System.Drawing.Size(526, 90);
+            this.CPU_info.TabIndex = 6;
+            this.CPU_info.Paint += new System.Windows.Forms.PaintEventHandler(this.CPU_info_Paint);
+            
             // 
             // btnSettings
             // 
@@ -287,6 +291,28 @@
             this.ram_name.TabIndex = 0;
             this.ram_name.Text = "{ram_name}";
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "PC Components Monitor";
+            this.notifyIcon1.BalloonTipClicked += new System.EventHandler(this.notifyIcon1_BalloonTipClicked);
+            this.notifyIcon1.Click += new System.EventHandler(this.notifyIcon1_Click);
+            // 
+            // btnHide
+            // 
+            this.btnHide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnHide.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnHide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHide.Font = new System.Drawing.Font("Segoe UI Black", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnHide.ForeColor = System.Drawing.Color.DimGray;
+            this.btnHide.Location = new System.Drawing.Point(448, -2);
+            this.btnHide.Name = "btnHide";
+            this.btnHide.Size = new System.Drawing.Size(36, 35);
+            this.btnHide.TabIndex = 5;
+            this.btnHide.Text = "-";
+            this.btnHide.UseVisualStyleBackColor = false;
+            this.btnHide.Click += new System.EventHandler(this.btnHide_Click);
+            // 
             // App
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -331,5 +357,7 @@
         private System.Windows.Forms.Label ram_usage;
         private System.Windows.Forms.Label RAM;
         private System.Windows.Forms.Label ram_name;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.Button btnHide;
     }
 }

@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using System.IO;
 using Microsoft.Toolkit.Uwp.Notifications;
 
-namespace PcComponentnsStats
+namespace PcComponentsMonitor
 {
     public partial class App : Form
     {
@@ -341,6 +341,34 @@ namespace PcComponentnsStats
         private void CPU_info_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnHide_Click(object sender, EventArgs e)
+        {
+            Hide();
+            notifyIcon1.Visible = true;
+            notifyIcon1.BalloonTipIcon = ToolTipIcon.Info;
+            notifyIcon1.BalloonTipTitle = "PC Components Monitor";
+            notifyIcon1.BalloonTipText = "Click here or on the icon to make the app visible again";
+            notifyIcon1.ShowBalloonTip(1000);
+        }
+
+        private void notifyIcon1_BalloonTipClicked(object sender, EventArgs e)
+        {
+            Show();
+            notifyIcon1.Visible = false;
+            notifyIcon1.BalloonTipIcon = ToolTipIcon.None;
+            notifyIcon1.BalloonTipTitle = string.Empty;
+            notifyIcon1.BalloonTipText = string.Empty;
+        }
+
+        private void notifyIcon1_Click(object sender, EventArgs e)
+        {
+            Show();
+            notifyIcon1.Visible = false;
+            notifyIcon1.BalloonTipIcon = ToolTipIcon.None;
+            notifyIcon1.BalloonTipTitle = string.Empty;
+            notifyIcon1.BalloonTipText = string.Empty;
         }
     }
 }

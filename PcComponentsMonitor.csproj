@@ -7,8 +7,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B54A8792-568C-4C98-98BF-84D4536CAF07}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>PcComponentnsStats</RootNamespace>
-    <AssemblyName>PcComponentnsStats</AssemblyName>
+    <RootNamespace>PcComponentsMonitor</RootNamespace>
+    <AssemblyName>PcComponentsMonitor</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -126,6 +126,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>

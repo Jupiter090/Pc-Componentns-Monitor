@@ -1,4 +1,4 @@
-﻿namespace PcComponentnsStats
+﻿namespace PcComponentsMonitor
 {
     partial class Settings
     {
@@ -35,8 +35,8 @@
             this.toolStripDropDown1 = new System.Windows.Forms.ToolStripDropDown();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnApply = new PcComponentnsStats.resources.customButtons();
-            this.btnSettings = new PcComponentnsStats.resources.customButtons();
+            this.btnApply = new PcComponentsMonitor.resources.customButtons();
+            this.btnSettings = new PcComponentsMonitor.resources.customButtons();
             this.SuspendLayout();
             // 
             // txtSettings
@@ -172,11 +172,11 @@
 
         private System.Windows.Forms.Label txtSettings;
         private System.Windows.Forms.CheckBox chbxSendNotifactionns;
-        private resources.customButtons btnSettings;
+        private PcComponentsMonitor.resources.customButtons btnSettings;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.ToolStripDropDown toolStripDropDown1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
-        private resources.customButtons btnApply;
+        private PcComponentsMonitor.resources.customButtons btnApply;
     }
 }

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PcComponentnsStats")]
+[assembly: AssemblyTitle("Pc Components Monitor")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Matej Planeta")]
-[assembly: AssemblyProduct("PcComponentnsStats")]
+[assembly: AssemblyProduct("Pc Components Monitor")]
 [assembly: AssemblyCopyright("Copyright ©Matej Planeta 2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

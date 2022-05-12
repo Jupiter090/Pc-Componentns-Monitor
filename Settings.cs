@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using System.Net.Mail;
 using System.Net;
 
-namespace PcComponentnsStats
+namespace PcComponentsMonitor
 {
     public partial class Settings : Form
     {
