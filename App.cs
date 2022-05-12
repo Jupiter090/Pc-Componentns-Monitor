@@ -90,6 +90,19 @@ namespace PcComponentsMonitor
                 sendedWarning_ram_usage = true;
             }
 
+            //Gets C:\ drive info
+            DriveInfo[] allDrives = DriveInfo.GetDrives();
+            foreach (DriveInfo drive in allDrives)
+            {
+                drive_space.Text = "Space: " + drive.TotalFreeSpace / 1073741824 + "MB / " + drive.TotalSize / 1073741824 + "MB";
+                float driveFull = drive.TotalSize / 1073741824;
+                float driveUsed = driveFull - drive.TotalFreeSpace / 1073741824;
+                float driveUsedPercentage = driveUsed * 100 / driveFull;
+                drive_used.Text = "Used: " + Math.Round(driveUsedPercentage) + "%";
+                ChangeDriveUsedColor(Math.Round(driveUsedPercentage));
+                break;
+            }
+
             //Resets the timer
             Timer timer  = sender as Timer;
             timer.Interval = 5000;
@@ -105,7 +118,9 @@ namespace PcComponentsMonitor
                 panelName.ForeColor = Color.White;
                 panelName.BackColor = Color.FromArgb(55, 55, 55);
                 btnExit.BackColor = Color.FromArgb(55, 55, 55);
-                btnExit.FlatAppearance.BorderColor = Color.FromArgb(55, 55, 55); 
+                btnExit.FlatAppearance.BorderColor = Color.FromArgb(55, 55, 55);
+                btnHide.BackColor = Color.FromArgb(55, 55, 55);
+                btnHide.FlatAppearance.BorderColor = Color.FromArgb(55, 55, 55);
             }
 
             //Sets the styles
@@ -156,6 +171,19 @@ namespace PcComponentsMonitor
             ram_usage.Text = "Usage: " + ram_usage_f.ToString() + "%";
             ChangeRAMUSageColor(ram_usage_f);
 
+            //Gets C:\ drive info
+            DriveInfo[] allDrives = DriveInfo.GetDrives();
+            foreach (DriveInfo drive in allDrives)
+            {
+                drive_name.Text = "Name: " + drive.VolumeLabel + " (" + drive.Name + ")";
+                drive_space.Text = "Space: " + drive.TotalFreeSpace / 1073741824 + "MB / " + drive.TotalSize / 1073741824 + "MB";
+                float driveFull = drive.TotalSize / 1073741824;
+                float driveUsed = driveFull - drive.TotalFreeSpace / 1073741824;
+                float driveUsedPercentage = driveUsed * 100 / driveFull;
+                drive_used.Text = "Used: " + Math.Round(driveUsedPercentage) + "%";
+                ChangeDriveUsedColor(Math.Round(driveUsedPercentage));
+                break;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -178,6 +206,8 @@ namespace PcComponentsMonitor
                 panelName.BackColor = Color.FromArgb(55, 55, 55);
                 btnExit.BackColor = Color.FromArgb(55, 55, 55);
                 btnExit.FlatAppearance.BorderColor = Color.FromArgb(55, 55, 55);
+                btnHide.BackColor = Color.FromArgb(55, 55, 55);
+                btnHide.FlatAppearance.BorderColor = Color.FromArgb(55, 55, 55);
                 if (this.cpu_temp.ForeColor == Color.Black)
                 {
                     cpu_temp.ForeColor = Color.White;
@@ -186,7 +216,16 @@ namespace PcComponentsMonitor
                 {
                     cpu_usage.ForeColor= Color.White;
                 }
-                
+                if (this.ram_usage.ForeColor == Color.Black)
+                {
+                    ram_usage.ForeColor = Color.White;
+                }
+                if (this.drive_used.ForeColor == Color.Black)
+                {
+                    drive_used.ForeColor = Color.White;
+                    drive_space.ForeColor = Color.White;
+                }
+
 
             }
             else
@@ -198,6 +237,8 @@ namespace PcComponentsMonitor
                 panelName.BackColor = Color.FromArgb(224, 224, 224);
                 btnExit.BackColor = Color.FromArgb(224, 224, 224);
                 btnExit.FlatAppearance.BorderColor = Color.FromArgb(224, 224, 224);
+                btnHide.BackColor = Color.FromArgb(224, 224, 224);
+                btnHide.FlatAppearance.BorderColor = Color.FromArgb(224, 224, 224);
                 if (this.cpu_temp.ForeColor == Color.White)
                 {
                     cpu_temp.ForeColor = Color.Black;
@@ -205,6 +246,19 @@ namespace PcComponentsMonitor
                 if (this.cpu_usage.ForeColor == Color.White)
                 {
                     cpu_usage.ForeColor = Color.Black;
+                }
+                if (this.ram_usage.ForeColor == Color.White)
+                {
+                    cpu_usage.ForeColor = Color.Black;
+                }
+                if (this.drive_used.ForeColor == Color.White)
+                {
+                    cpu_usage.ForeColor = Color.Black;
+                }
+                if (this.drive_used.ForeColor == Color.White)
+                {
+                    drive_used.ForeColor = Color.Black;
+                    drive_space.ForeColor = Color.Black;
                 }
             }
             //Resets timer
@@ -220,6 +274,13 @@ namespace PcComponentsMonitor
             form.FormClosing += new FormClosingEventHandler(SettingsExit);
         }
         private void customButtons3_Click(object sender, EventArgs e)
+        {
+            Form form = new Settings();
+            form.Show();
+            canBeTheTopMost = false;
+            form.FormClosing += new FormClosingEventHandler(SettingsExit);
+        }
+        private void customButtons2_Click(object sender, EventArgs e)
         {
             Form form = new Settings();
             form.Show();
@@ -258,6 +319,59 @@ namespace PcComponentsMonitor
             }
         }
 
+        //When user wants to change panel
+        private void Previouse_RAM_Click(object sender, EventArgs e)
+        {
+            RAM_info.Location = new Point(0, 127);
+            CPU_info.Location = new Point(0, 27);
+        }
+
+        private void Next_cpu_Click(object sender, EventArgs e)
+        {
+            CPU_info.Location = new Point(0, 127);
+            RAM_info.Location = new Point(0, 27);
+        }
+        private void Next_RAM_Click(object sender, EventArgs e)
+        {
+            RAM_info.Location = new Point(0, 127);
+            Drive_info.Location = new Point(0, 27);
+        }
+        private void Previouse_Drive_Click(object sender, EventArgs e)
+        {
+            RAM_info.Location = new Point(0, 27);
+            Drive_info.Location = new Point(0, 127);
+        }
+
+        //When user clicks hide button
+        private void btnHide_Click(object sender, EventArgs e)
+        {
+            Hide();
+            notifyIcon1.Visible = true;
+            notifyIcon1.BalloonTipIcon = ToolTipIcon.Info;
+            notifyIcon1.BalloonTipTitle = "PC Components Monitor";
+            notifyIcon1.BalloonTipText = "Click here or on the icon to make the app visible again";
+            notifyIcon1.ShowBalloonTip(1000);
+        }
+
+        //Notify icon will reset when user opens again the app
+        private void notifyIcon1_BalloonTipClicked(object sender, EventArgs e)
+        {
+            Show();
+            notifyIcon1.Visible = false;
+            notifyIcon1.BalloonTipIcon = ToolTipIcon.None;
+            notifyIcon1.BalloonTipTitle = string.Empty;
+            notifyIcon1.BalloonTipText = string.Empty;
+        }
+
+        //Notify icon will reset when user opens again the app
+        private void notifyIcon1_Click(object sender, EventArgs e)
+        {
+            Show();
+            notifyIcon1.Visible = false;
+            notifyIcon1.BalloonTipIcon = ToolTipIcon.None;
+            notifyIcon1.BalloonTipTitle = string.Empty;
+            notifyIcon1.BalloonTipText = string.Empty;
+        }
 
         //Function to change text color depnding on temperature
         private void ChangeCPUTempColor(double temperature)
@@ -278,6 +392,7 @@ namespace PcComponentsMonitor
                 sendedWarning_cpu = false;
             }
         }
+        //Chanegs cpu usage text color
         private void ChangeCPUUsageColor(float cpu_usage_f)
         {
             if (Math.Round(cpu_usage_f) < 25f)
@@ -300,6 +415,7 @@ namespace PcComponentsMonitor
             }
 
         }
+        //Changes ram text color
         private void ChangeRAMUSageColor(double usage)
         {
             if (usage < 25f)
@@ -326,49 +442,31 @@ namespace PcComponentsMonitor
             }
         }
 
-        private void Previouse_RAM_Click(object sender, EventArgs e)
+        //Changes drive text color
+        private void ChangeDriveUsedColor(double percentage)
         {
-            RAM_info.Location = new Point(0, 127);
-            CPU_info.Location = new Point(0, 27);
+            if (percentage <= 25)
+            {
+                drive_space.ForeColor = ForeColor;
+                drive_used.ForeColor = ForeColor;
+            }
+            else if (percentage > 25 && percentage <= 50)
+            {
+                drive_space.ForeColor = Color.Orange;
+                drive_used.ForeColor = Color.Orange;
+            }
+            else if (percentage > 50 && percentage <= 90)
+            {
+                drive_space.ForeColor = Color.OrangeRed;
+                drive_used.ForeColor = Color.OrangeRed;
+            }
+            else if (percentage > 90 && percentage <= 100)
+            {
+                drive_space.ForeColor = Color.Red;
+                drive_used.ForeColor = Color.Red;
+            }
         }
 
-        private void Next_cpu_Click(object sender, EventArgs e)
-        {
-            CPU_info.Location = new Point(0, 127);
-            RAM_info.Location = new Point(0, 27);
-        }
 
-        private void CPU_info_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void btnHide_Click(object sender, EventArgs e)
-        {
-            Hide();
-            notifyIcon1.Visible = true;
-            notifyIcon1.BalloonTipIcon = ToolTipIcon.Info;
-            notifyIcon1.BalloonTipTitle = "PC Components Monitor";
-            notifyIcon1.BalloonTipText = "Click here or on the icon to make the app visible again";
-            notifyIcon1.ShowBalloonTip(1000);
-        }
-
-        private void notifyIcon1_BalloonTipClicked(object sender, EventArgs e)
-        {
-            Show();
-            notifyIcon1.Visible = false;
-            notifyIcon1.BalloonTipIcon = ToolTipIcon.None;
-            notifyIcon1.BalloonTipTitle = string.Empty;
-            notifyIcon1.BalloonTipText = string.Empty;
-        }
-
-        private void notifyIcon1_Click(object sender, EventArgs e)
-        {
-            Show();
-            notifyIcon1.Visible = false;
-            notifyIcon1.BalloonTipIcon = ToolTipIcon.None;
-            notifyIcon1.BalloonTipTitle = string.Empty;
-            notifyIcon1.BalloonTipText = string.Empty;
-        }
     }
 }
