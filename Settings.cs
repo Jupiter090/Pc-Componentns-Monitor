@@ -15,6 +15,7 @@ namespace PcComponentsMonitor
 {
     public partial class Settings : Form
     {
+        private bool dont = false;
         public Settings()
         {
             InitializeComponent();
@@ -25,7 +26,10 @@ namespace PcComponentsMonitor
             //Change the checks state
             chbxSendNotifactionns.Checked = Properties.Settings.Default.sendMessage;
 
+            dont = true;
             checkBox1.Checked = Properties.Settings.Default.Darkmode;
+            comboBox1.Text = Properties.Settings.Default.Position;
+            chcIgnoreTskbar.Checked = Properties.Settings.Default.IgnoreTaskbar;
 
             if (Properties.Settings.Default.Darkmode)
             {
@@ -50,6 +54,7 @@ namespace PcComponentsMonitor
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
+            
             //Dark mode setting
             CheckBox check = sender as CheckBox;
 
@@ -69,6 +74,11 @@ namespace PcComponentsMonitor
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (dont)
+            {
+                dont = false;
+                return;
+            }
             ComboBox comboBox = sender as ComboBox;
             btnApply.Visible = true;
             Properties.Settings.Default.Position = comboBox.Text;
@@ -79,6 +89,19 @@ namespace PcComponentsMonitor
         {
             App.reason = "apply";
             this.Close();
+        }
+
+        private void chcIgnoreTskbar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (dont)
+            {
+                dont = false;
+                return;
+            }
+            CheckBox checkBox = sender as CheckBox;
+            Properties.Settings.Default.IgnoreTaskbar = checkBox.Checked;
+            btnApply.Visible= true;
+            Properties.Settings.Default.Save();
         }
     }
 }

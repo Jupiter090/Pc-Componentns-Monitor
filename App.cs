@@ -94,11 +94,11 @@ namespace PcComponentsMonitor
             DriveInfo[] allDrives = DriveInfo.GetDrives();
             foreach (DriveInfo drive in allDrives)
             {
-                drive_space.Text = "Space: " + drive.TotalFreeSpace / 1073741824 + "MB / " + drive.TotalSize / 1073741824 + "MB";
+                drive_free_space.Text = "Free space: " + drive.TotalFreeSpace / 1073741824 + "MB / " + drive.TotalSize / 1073741824 + "MB";
                 float driveFull = drive.TotalSize / 1073741824;
                 float driveUsed = driveFull - drive.TotalFreeSpace / 1073741824;
                 float driveUsedPercentage = driveUsed * 100 / driveFull;
-                drive_used.Text = "Used: " + Math.Round(driveUsedPercentage) + "%";
+                drive_fullness.Text = "Fullness: " + Math.Round(driveUsedPercentage) + "%";
                 ChangeDriveUsedColor(Math.Round(driveUsedPercentage));
                 break;
             }
@@ -131,6 +131,31 @@ namespace PcComponentsMonitor
             this.TopMost = true;
             this.ShowInTaskbar = false;
             CPU_info.Location = new Point(0, 27);
+
+            //Form postion
+            switch (Properties.Settings.Default.Position)
+            {
+                case "Right, Bottom":
+                    //When ignore taskbar is off
+                    if (!Properties.Settings.Default.IgnoreTaskbar) this.Location = new Point(workingArea.Right - Size.Width, workingArea.Bottom - Size.Height);
+                    
+                    //When ignore taskbar is on
+                    else this.Location = new Point(Screen.PrimaryScreen.Bounds.Right - this.Width, Screen.PrimaryScreen.Bounds.Bottom - this.Height);
+                    break;
+                case "Right, Top":
+                    this.Location = new Point(Screen.PrimaryScreen.Bounds.Right - this.Width, 0);
+                    break;
+                case "Left, Bottom":
+                    //When ignore taskbar is off
+                    if (!Properties.Settings.Default.IgnoreTaskbar) this.Location = new Point(workingArea.Left, workingArea.Bottom - Size.Height);
+                    
+                    //When ignore taskbar is on
+                    else this.Location = new Point(Screen.PrimaryScreen.Bounds.Left, Screen.PrimaryScreen.Bounds.Bottom - this.Height);
+                    break;
+                case "Left, Top":
+                    this.Location = new Point(0, 0);
+                    break;
+            }
 
 
             double temperature = 0;  
@@ -176,11 +201,11 @@ namespace PcComponentsMonitor
             foreach (DriveInfo drive in allDrives)
             {
                 drive_name.Text = "Name: " + drive.VolumeLabel + " (" + drive.Name + ")";
-                drive_space.Text = "Space: " + drive.TotalFreeSpace / 1073741824 + "MB / " + drive.TotalSize / 1073741824 + "MB";
+                drive_free_space.Text = "Free space: " + drive.TotalFreeSpace / 1073741824 + "MB / " + drive.TotalSize / 1073741824 + "MB";
                 float driveFull = drive.TotalSize / 1073741824;
                 float driveUsed = driveFull - drive.TotalFreeSpace / 1073741824;
                 float driveUsedPercentage = driveUsed * 100 / driveFull;
-                drive_used.Text = "Used: " + Math.Round(driveUsedPercentage) + "%";
+                drive_fullness.Text = "Fullness: " + Math.Round(driveUsedPercentage) + "%";
                 ChangeDriveUsedColor(Math.Round(driveUsedPercentage));
                 break;
             }
@@ -220,10 +245,10 @@ namespace PcComponentsMonitor
                 {
                     ram_usage.ForeColor = Color.White;
                 }
-                if (this.drive_used.ForeColor == Color.Black)
+                if (this.drive_fullness.ForeColor == Color.Black)
                 {
-                    drive_used.ForeColor = Color.White;
-                    drive_space.ForeColor = Color.White;
+                    drive_fullness.ForeColor = Color.White;
+                    drive_free_space.ForeColor = Color.White;
                 }
 
 
@@ -251,14 +276,14 @@ namespace PcComponentsMonitor
                 {
                     cpu_usage.ForeColor = Color.Black;
                 }
-                if (this.drive_used.ForeColor == Color.White)
+                if (this.drive_fullness.ForeColor == Color.White)
                 {
                     cpu_usage.ForeColor = Color.Black;
                 }
-                if (this.drive_used.ForeColor == Color.White)
+                if (this.drive_fullness.ForeColor == Color.White)
                 {
-                    drive_used.ForeColor = Color.Black;
-                    drive_space.ForeColor = Color.Black;
+                    drive_fullness.ForeColor = Color.Black;
+                    drive_free_space.ForeColor = Color.Black;
                 }
             }
             //Resets timer
@@ -301,15 +326,21 @@ namespace PcComponentsMonitor
                 switch (Properties.Settings.Default.Position)
                 {
                     case "Right, Bottom":
-                        this.Location = new Point(workingArea.Right - Size.Width,
-                                      workingArea.Bottom - Size.Height);
+                        //When ignore taskbar is off
+                        if (!Properties.Settings.Default.IgnoreTaskbar) this.Location = new Point(workingArea.Right - Size.Width, workingArea.Bottom - Size.Height);
+
+                        //When ignore taskbar is on
+                        else this.Location = new Point(Screen.PrimaryScreen.Bounds.Right - this.Width, Screen.PrimaryScreen.Bounds.Bottom - this.Height);
                         break;
                     case "Right, Top":
                         this.Location = new Point(Screen.PrimaryScreen.Bounds.Right - this.Width, 0);
                         break;
                     case "Left, Bottom":
-                        this.Location = new Point(workingArea.Left,
-                                      workingArea.Bottom - Size.Height);
+                        //When ignore taskbar is off
+                        if (!Properties.Settings.Default.IgnoreTaskbar) this.Location = new Point(workingArea.Left, workingArea.Bottom - Size.Height);
+
+                        //When ignore taskbar is on
+                        else this.Location = new Point(Screen.PrimaryScreen.Bounds.Left, Screen.PrimaryScreen.Bounds.Bottom - this.Height);
                         break;
                     case "Left, Top":
                         this.Location = new Point(0, 0);
@@ -447,26 +478,24 @@ namespace PcComponentsMonitor
         {
             if (percentage <= 25)
             {
-                drive_space.ForeColor = ForeColor;
-                drive_used.ForeColor = ForeColor;
+                drive_free_space.ForeColor = ForeColor;
+                drive_fullness.ForeColor = ForeColor;
             }
             else if (percentage > 25 && percentage <= 50)
             {
-                drive_space.ForeColor = Color.Orange;
-                drive_used.ForeColor = Color.Orange;
+                drive_free_space.ForeColor = Color.Orange;
+                drive_fullness.ForeColor = Color.Orange;
             }
             else if (percentage > 50 && percentage <= 90)
             {
-                drive_space.ForeColor = Color.OrangeRed;
-                drive_used.ForeColor = Color.OrangeRed;
+                drive_free_space.ForeColor = Color.OrangeRed;
+                drive_fullness.ForeColor = Color.OrangeRed;
             }
             else if (percentage > 90 && percentage <= 100)
             {
-                drive_space.ForeColor = Color.Red;
-                drive_used.ForeColor = Color.Red;
+                drive_free_space.ForeColor = Color.Red;
+                drive_fullness.ForeColor = Color.Red;
             }
         }
-
-
     }
 }

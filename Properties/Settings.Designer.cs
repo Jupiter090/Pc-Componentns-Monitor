@@ -58,5 +58,17 @@ namespace PcComponentsMonitor.Properties {
                 this["Position"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IgnoreTaskbar {
+            get {
+                return ((bool)(this["IgnoreTaskbar"]));
+            }
+            set {
+                this["IgnoreTaskbar"] = value;
+            }
+        }
     }
 }

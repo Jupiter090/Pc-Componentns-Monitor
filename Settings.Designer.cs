@@ -37,6 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnApply = new PcComponentsMonitor.resources.customButtons();
             this.btnSettings = new PcComponentsMonitor.resources.customButtons();
+            this.chcIgnoreTskbar = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // txtSettings
@@ -147,11 +148,24 @@
             this.btnSettings.UseVisualStyleBackColor = false;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
+            // chcIgnoreTskbar
+            // 
+            this.chcIgnoreTskbar.AutoSize = true;
+            this.chcIgnoreTskbar.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.chcIgnoreTskbar.Location = new System.Drawing.Point(21, 202);
+            this.chcIgnoreTskbar.Name = "chcIgnoreTskbar";
+            this.chcIgnoreTskbar.Size = new System.Drawing.Size(188, 33);
+            this.chcIgnoreTskbar.TabIndex = 22;
+            this.chcIgnoreTskbar.Text = "Ignore taskbar";
+            this.chcIgnoreTskbar.UseVisualStyleBackColor = true;
+            this.chcIgnoreTskbar.CheckedChanged += new System.EventHandler(this.chcIgnoreTskbar_CheckedChanged);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 347);
+            this.Controls.Add(this.chcIgnoreTskbar);
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
@@ -178,5 +192,6 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
         private PcComponentsMonitor.resources.customButtons btnApply;
+        private System.Windows.Forms.CheckBox chcIgnoreTskbar;
     }
 }

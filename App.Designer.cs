@@ -43,6 +43,7 @@
             this.btnSettings = new PcComponentsMonitor.resources.customButtons();
             this.cpu_usage = new System.Windows.Forms.Label();
             this.RAM_info = new System.Windows.Forms.Panel();
+            this.Next_RAM = new PcComponentsMonitor.resources.customButtons();
             this.Previouse_RAM = new PcComponentsMonitor.resources.customButtons();
             this.customButtons3 = new PcComponentsMonitor.resources.customButtons();
             this.ram_usage = new System.Windows.Forms.Label();
@@ -50,13 +51,12 @@
             this.ram_name = new System.Windows.Forms.Label();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.Drive_info = new System.Windows.Forms.Panel();
-            this.drive_used = new System.Windows.Forms.Label();
-            this.drive_space = new System.Windows.Forms.Label();
+            this.drive_fullness = new System.Windows.Forms.Label();
+            this.drive_free_space = new System.Windows.Forms.Label();
             this.Previouse_Drive = new PcComponentsMonitor.resources.customButtons();
             this.customButtons2 = new PcComponentsMonitor.resources.customButtons();
             this.Drives = new System.Windows.Forms.Label();
             this.drive_name = new System.Windows.Forms.Label();
-            this.Next_RAM = new PcComponentsMonitor.resources.customButtons();
             this.panelName.SuspendLayout();
             this.CPU_info.SuspendLayout();
             this.RAM_info.SuspendLayout();
@@ -244,6 +244,26 @@
             this.RAM_info.Size = new System.Drawing.Size(526, 90);
             this.RAM_info.TabIndex = 8;
             // 
+            // Next_RAM
+            // 
+            this.Next_RAM.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Next_RAM.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Next_RAM.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.Next_RAM.BorderRadius = 5;
+            this.Next_RAM.BorderSize = 0;
+            this.Next_RAM.FlatAppearance.BorderSize = 0;
+            this.Next_RAM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Next_RAM.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.Next_RAM.ForeColor = System.Drawing.Color.White;
+            this.Next_RAM.Location = new System.Drawing.Point(484, 3);
+            this.Next_RAM.Name = "Next_RAM";
+            this.Next_RAM.Size = new System.Drawing.Size(36, 36);
+            this.Next_RAM.TabIndex = 8;
+            this.Next_RAM.Text = ">";
+            this.Next_RAM.TextdColor = System.Drawing.Color.White;
+            this.Next_RAM.UseVisualStyleBackColor = false;
+            this.Next_RAM.Click += new System.EventHandler(this.Next_RAM_Click);
+            // 
             // Previouse_RAM
             // 
             this.Previouse_RAM.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -323,8 +343,8 @@
             // 
             // Drive_info
             // 
-            this.Drive_info.Controls.Add(this.drive_used);
-            this.Drive_info.Controls.Add(this.drive_space);
+            this.Drive_info.Controls.Add(this.drive_fullness);
+            this.Drive_info.Controls.Add(this.drive_free_space);
             this.Drive_info.Controls.Add(this.Previouse_Drive);
             this.Drive_info.Controls.Add(this.customButtons2);
             this.Drive_info.Controls.Add(this.Drives);
@@ -334,25 +354,25 @@
             this.Drive_info.Size = new System.Drawing.Size(526, 90);
             this.Drive_info.TabIndex = 9;
             // 
-            // drive_used
+            // drive_fullness
             // 
-            this.drive_used.AutoSize = true;
-            this.drive_used.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.drive_used.Location = new System.Drawing.Point(15, 51);
-            this.drive_used.Name = "drive_used";
-            this.drive_used.Size = new System.Drawing.Size(84, 16);
-            this.drive_used.TabIndex = 9;
-            this.drive_used.Text = "{drive_used}";
+            this.drive_fullness.AutoSize = true;
+            this.drive_fullness.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.drive_fullness.Location = new System.Drawing.Point(15, 51);
+            this.drive_fullness.Name = "drive_fullness";
+            this.drive_fullness.Size = new System.Drawing.Size(99, 16);
+            this.drive_fullness.TabIndex = 9;
+            this.drive_fullness.Text = "{drive_fullness}";
             // 
-            // drive_space
+            // drive_free_space
             // 
-            this.drive_space.AutoSize = true;
-            this.drive_space.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.drive_space.Location = new System.Drawing.Point(15, 35);
-            this.drive_space.Name = "drive_space";
-            this.drive_space.Size = new System.Drawing.Size(92, 16);
-            this.drive_space.TabIndex = 8;
-            this.drive_space.Text = "{drive_space}";
+            this.drive_free_space.AutoSize = true;
+            this.drive_free_space.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.drive_free_space.Location = new System.Drawing.Point(15, 35);
+            this.drive_free_space.Name = "drive_free_space";
+            this.drive_free_space.Size = new System.Drawing.Size(122, 16);
+            this.drive_free_space.TabIndex = 8;
+            this.drive_free_space.Text = "{drive_free_space}";
             // 
             // Previouse_Drive
             // 
@@ -414,32 +434,12 @@
             this.drive_name.TabIndex = 0;
             this.drive_name.Text = "{drive_name}";
             // 
-            // Next_RAM
-            // 
-            this.Next_RAM.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Next_RAM.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Next_RAM.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.Next_RAM.BorderRadius = 5;
-            this.Next_RAM.BorderSize = 0;
-            this.Next_RAM.FlatAppearance.BorderSize = 0;
-            this.Next_RAM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Next_RAM.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Next_RAM.ForeColor = System.Drawing.Color.White;
-            this.Next_RAM.Location = new System.Drawing.Point(484, 3);
-            this.Next_RAM.Name = "Next_RAM";
-            this.Next_RAM.Size = new System.Drawing.Size(36, 36);
-            this.Next_RAM.TabIndex = 8;
-            this.Next_RAM.Text = ">";
-            this.Next_RAM.TextdColor = System.Drawing.Color.White;
-            this.Next_RAM.UseVisualStyleBackColor = false;
-            this.Next_RAM.Click += new System.EventHandler(this.Next_RAM_Click);
-            // 
             // App
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(522, 121);
+            this.ClientSize = new System.Drawing.Size(522, 122);
             this.Controls.Add(this.panelName);
             this.Controls.Add(this.CPU_info);
             this.Controls.Add(this.Drive_info);
@@ -488,8 +488,8 @@
         private resources.customButtons customButtons2;
         private System.Windows.Forms.Label Drives;
         private System.Windows.Forms.Label drive_name;
-        private System.Windows.Forms.Label drive_space;
-        private System.Windows.Forms.Label drive_used;
+        private System.Windows.Forms.Label drive_free_space;
+        private System.Windows.Forms.Label drive_fullness;
         private resources.customButtons Next_RAM;
     }
 }

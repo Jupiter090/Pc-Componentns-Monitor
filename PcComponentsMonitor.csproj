@@ -73,6 +73,10 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Toolkit.Uwp.Notifications, Version=7.1.0.0, Culture=neutral, PublicKeyToken=4aff67a105548ee2, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Toolkit.Uwp.Notifications.7.1.2\lib\net461\Microsoft.Toolkit.Uwp.Notifications.dll</HintPath>
