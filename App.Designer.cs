@@ -18,7 +18,7 @@
             }
             base.Dispose(disposing);
         }
-        
+
         #region Windows Form Designer generated code
         /// <summary>
         /// Required method for Designer support - do not modify
@@ -31,7 +31,6 @@
             this.cpu_name = new System.Windows.Forms.Label();
             this.cpu_temp = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
             this.CPU = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -39,6 +38,7 @@
             this.btnHide = new System.Windows.Forms.Button();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.CPU_info = new System.Windows.Forms.Panel();
+            this.previouse_cpu = new PcComponentsMonitor.resources.customButtons();
             this.Next_cpu = new PcComponentsMonitor.resources.customButtons();
             this.btnSettings = new PcComponentsMonitor.resources.customButtons();
             this.cpu_usage = new System.Windows.Forms.Label();
@@ -57,10 +57,19 @@
             this.customButtons2 = new PcComponentsMonitor.resources.customButtons();
             this.Drives = new System.Windows.Forms.Label();
             this.drive_name = new System.Windows.Forms.Label();
+            this.pc_info = new System.Windows.Forms.Panel();
+            this.pc_os_drive = new System.Windows.Forms.Label();
+            this.pc_ram = new System.Windows.Forms.Label();
+            this.pc_cpu = new System.Windows.Forms.Label();
+            this.next_pc = new PcComponentsMonitor.resources.customButtons();
+            this.customButtons4 = new PcComponentsMonitor.resources.customButtons();
+            this.PC = new System.Windows.Forms.Label();
+            this.pc_name = new System.Windows.Forms.Label();
             this.panelName.SuspendLayout();
             this.CPU_info.SuspendLayout();
             this.RAM_info.SuspendLayout();
             this.Drive_info.SuspendLayout();
+            this.pc_info.SuspendLayout();
             this.SuspendLayout();
             // 
             // cpu_name
@@ -88,16 +97,6 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 5000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(15, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 16);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "CPU:";
             // 
             // CPU
             // 
@@ -169,17 +168,37 @@
             // 
             // CPU_info
             // 
+            this.CPU_info.Controls.Add(this.previouse_cpu);
             this.CPU_info.Controls.Add(this.Next_cpu);
             this.CPU_info.Controls.Add(this.btnSettings);
             this.CPU_info.Controls.Add(this.cpu_usage);
             this.CPU_info.Controls.Add(this.cpu_temp);
-            this.CPU_info.Controls.Add(this.label1);
             this.CPU_info.Controls.Add(this.CPU);
             this.CPU_info.Controls.Add(this.cpu_name);
-            this.CPU_info.Location = new System.Drawing.Point(0, 31);
+            this.CPU_info.Location = new System.Drawing.Point(0, 157);
             this.CPU_info.Name = "CPU_info";
             this.CPU_info.Size = new System.Drawing.Size(526, 90);
             this.CPU_info.TabIndex = 6;
+            // 
+            // previouse_cpu
+            // 
+            this.previouse_cpu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.previouse_cpu.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.previouse_cpu.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.previouse_cpu.BorderRadius = 5;
+            this.previouse_cpu.BorderSize = 0;
+            this.previouse_cpu.FlatAppearance.BorderSize = 0;
+            this.previouse_cpu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.previouse_cpu.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.previouse_cpu.ForeColor = System.Drawing.Color.White;
+            this.previouse_cpu.Location = new System.Drawing.Point(442, 3);
+            this.previouse_cpu.Name = "previouse_cpu";
+            this.previouse_cpu.Size = new System.Drawing.Size(36, 36);
+            this.previouse_cpu.TabIndex = 8;
+            this.previouse_cpu.Text = "<";
+            this.previouse_cpu.TextdColor = System.Drawing.Color.White;
+            this.previouse_cpu.UseVisualStyleBackColor = false;
+            this.previouse_cpu.Click += new System.EventHandler(this.previouse_cpu_Click);
             // 
             // Next_cpu
             // 
@@ -434,12 +453,117 @@
             this.drive_name.TabIndex = 0;
             this.drive_name.Text = "{drive_name}";
             // 
+            // pc_info
+            // 
+            this.pc_info.Controls.Add(this.pc_os_drive);
+            this.pc_info.Controls.Add(this.pc_ram);
+            this.pc_info.Controls.Add(this.pc_cpu);
+            this.pc_info.Controls.Add(this.next_pc);
+            this.pc_info.Controls.Add(this.customButtons4);
+            this.pc_info.Controls.Add(this.PC);
+            this.pc_info.Controls.Add(this.pc_name);
+            this.pc_info.Location = new System.Drawing.Point(0, 27);
+            this.pc_info.Name = "pc_info";
+            this.pc_info.Size = new System.Drawing.Size(526, 90);
+            this.pc_info.TabIndex = 8;
+            // 
+            // pc_os_drive
+            // 
+            this.pc_os_drive.AutoSize = true;
+            this.pc_os_drive.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.pc_os_drive.Location = new System.Drawing.Point(15, 65);
+            this.pc_os_drive.Name = "pc_os_drive";
+            this.pc_os_drive.Size = new System.Drawing.Size(91, 16);
+            this.pc_os_drive.TabIndex = 10;
+            this.pc_os_drive.Text = "{pc_os_drive}";
+            // 
+            // pc_ram
+            // 
+            this.pc_ram.AutoSize = true;
+            this.pc_ram.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.pc_ram.Location = new System.Drawing.Point(15, 49);
+            this.pc_ram.Name = "pc_ram";
+            this.pc_ram.Size = new System.Drawing.Size(62, 16);
+            this.pc_ram.TabIndex = 9;
+            this.pc_ram.Text = "{pc_ram}";
+            // 
+            // pc_cpu
+            // 
+            this.pc_cpu.AutoSize = true;
+            this.pc_cpu.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.pc_cpu.Location = new System.Drawing.Point(15, 33);
+            this.pc_cpu.Name = "pc_cpu";
+            this.pc_cpu.Size = new System.Drawing.Size(61, 16);
+            this.pc_cpu.TabIndex = 8;
+            this.pc_cpu.Text = "{pc_cpu}";
+            // 
+            // next_pc
+            // 
+            this.next_pc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.next_pc.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.next_pc.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.next_pc.BorderRadius = 5;
+            this.next_pc.BorderSize = 0;
+            this.next_pc.FlatAppearance.BorderSize = 0;
+            this.next_pc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.next_pc.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.next_pc.ForeColor = System.Drawing.Color.White;
+            this.next_pc.Location = new System.Drawing.Point(479, 3);
+            this.next_pc.Name = "next_pc";
+            this.next_pc.Size = new System.Drawing.Size(36, 36);
+            this.next_pc.TabIndex = 7;
+            this.next_pc.Text = ">";
+            this.next_pc.TextdColor = System.Drawing.Color.White;
+            this.next_pc.UseVisualStyleBackColor = false;
+            this.next_pc.Click += new System.EventHandler(this.customButtons1_Click);
+            // 
+            // customButtons4
+            // 
+            this.customButtons4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.customButtons4.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.customButtons4.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.customButtons4.BorderRadius = 5;
+            this.customButtons4.BorderSize = 0;
+            this.customButtons4.FlatAppearance.BorderSize = 0;
+            this.customButtons4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.customButtons4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.customButtons4.ForeColor = System.Drawing.Color.White;
+            this.customButtons4.Location = new System.Drawing.Point(398, 51);
+            this.customButtons4.Name = "customButtons4";
+            this.customButtons4.Size = new System.Drawing.Size(122, 36);
+            this.customButtons4.TabIndex = 6;
+            this.customButtons4.Text = "Settings";
+            this.customButtons4.TextdColor = System.Drawing.Color.White;
+            this.customButtons4.UseVisualStyleBackColor = false;
+            this.customButtons4.Click += new System.EventHandler(this.customButtons4_Click);
+            // 
+            // PC
+            // 
+            this.PC.AutoSize = true;
+            this.PC.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.PC.Location = new System.Drawing.Point(15, 1);
+            this.PC.Name = "PC";
+            this.PC.Size = new System.Drawing.Size(31, 16);
+            this.PC.TabIndex = 2;
+            this.PC.Text = "PC:";
+            // 
+            // pc_name
+            // 
+            this.pc_name.AutoSize = true;
+            this.pc_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.pc_name.Location = new System.Drawing.Point(15, 17);
+            this.pc_name.Name = "pc_name";
+            this.pc_name.Size = new System.Drawing.Size(73, 16);
+            this.pc_name.TabIndex = 0;
+            this.pc_name.Text = "{pc_name}";
+            // 
             // App
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(522, 122);
+            this.ClientSize = new System.Drawing.Size(522, 118);
+            this.Controls.Add(this.pc_info);
             this.Controls.Add(this.panelName);
             this.Controls.Add(this.CPU_info);
             this.Controls.Add(this.Drive_info);
@@ -458,6 +582,8 @@
             this.RAM_info.PerformLayout();
             this.Drive_info.ResumeLayout(false);
             this.Drive_info.PerformLayout();
+            this.pc_info.ResumeLayout(false);
+            this.pc_info.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -465,7 +591,6 @@
         private System.Windows.Forms.Label cpu_name;
         private System.Windows.Forms.Label cpu_temp;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label CPU;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label label2;
@@ -491,5 +616,14 @@
         private System.Windows.Forms.Label drive_free_space;
         private System.Windows.Forms.Label drive_fullness;
         private resources.customButtons Next_RAM;
+        private System.Windows.Forms.Panel pc_info;
+        private resources.customButtons next_pc;
+        private resources.customButtons customButtons4;
+        private System.Windows.Forms.Label PC;
+        private System.Windows.Forms.Label pc_name;
+        private System.Windows.Forms.Label pc_cpu;
+        private System.Windows.Forms.Label pc_ram;
+        private System.Windows.Forms.Label pc_os_drive;
+        private resources.customButtons previouse_cpu;
     }
 }

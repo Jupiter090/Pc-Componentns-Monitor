@@ -38,13 +38,18 @@
             this.btnApply = new PcComponentsMonitor.resources.customButtons();
             this.btnSettings = new PcComponentsMonitor.resources.customButtons();
             this.chcIgnoreTskbar = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panelName = new System.Windows.Forms.Panel();
+            this.btnHide = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.panelName.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtSettings
             // 
             this.txtSettings.AutoSize = true;
             this.txtSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.txtSettings.Location = new System.Drawing.Point(12, 9);
+            this.txtSettings.Location = new System.Drawing.Point(12, 34);
             this.txtSettings.Name = "txtSettings";
             this.txtSettings.Size = new System.Drawing.Size(200, 54);
             this.txtSettings.TabIndex = 0;
@@ -54,7 +59,7 @@
             // 
             this.chbxSendNotifactionns.AutoSize = true;
             this.chbxSendNotifactionns.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.chbxSendNotifactionns.Location = new System.Drawing.Point(21, 66);
+            this.chbxSendNotifactionns.Location = new System.Drawing.Point(21, 91);
             this.chbxSendNotifactionns.Name = "chbxSendNotifactionns";
             this.chbxSendNotifactionns.Size = new System.Drawing.Size(219, 33);
             this.chbxSendNotifactionns.TabIndex = 1;
@@ -66,7 +71,7 @@
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBox1.Location = new System.Drawing.Point(21, 105);
+            this.checkBox1.Location = new System.Drawing.Point(21, 130);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(153, 33);
             this.checkBox1.TabIndex = 17;
@@ -89,7 +94,7 @@
             "Right, Top",
             "Left, Bottom",
             "Left, Top"});
-            this.comboBox1.Location = new System.Drawing.Point(21, 172);
+            this.comboBox1.Location = new System.Drawing.Point(21, 197);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(219, 24);
             this.comboBox1.TabIndex = 19;
@@ -99,7 +104,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(12, 138);
+            this.label1.Location = new System.Drawing.Point(12, 163);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 31);
             this.label1.TabIndex = 20;
@@ -152,7 +157,7 @@
             // 
             this.chcIgnoreTskbar.AutoSize = true;
             this.chcIgnoreTskbar.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.chcIgnoreTskbar.Location = new System.Drawing.Point(21, 202);
+            this.chcIgnoreTskbar.Location = new System.Drawing.Point(21, 227);
             this.chcIgnoreTskbar.Name = "chcIgnoreTskbar";
             this.chcIgnoreTskbar.Size = new System.Drawing.Size(188, 33);
             this.chcIgnoreTskbar.TabIndex = 22;
@@ -160,11 +165,62 @@
             this.chcIgnoreTskbar.UseVisualStyleBackColor = true;
             this.chcIgnoreTskbar.CheckedChanged += new System.EventHandler(this.chcIgnoreTskbar_CheckedChanged);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(3, 2);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(279, 31);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "PC Components Monitor";
+            // 
+            // panelName
+            // 
+            this.panelName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panelName.Controls.Add(this.btnHide);
+            this.panelName.Controls.Add(this.btnExit);
+            this.panelName.Controls.Add(this.label2);
+            this.panelName.ForeColor = System.Drawing.Color.Black;
+            this.panelName.Location = new System.Drawing.Point(1, -2);
+            this.panelName.Name = "panelName";
+            this.panelName.Size = new System.Drawing.Size(799, 33);
+            this.panelName.TabIndex = 23;
+            // 
+            // btnHide
+            // 
+            this.btnHide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnHide.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnHide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHide.Font = new System.Drawing.Font("Segoe UI Black", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnHide.ForeColor = System.Drawing.Color.DimGray;
+            this.btnHide.Location = new System.Drawing.Point(721, -2);
+            this.btnHide.Name = "btnHide";
+            this.btnHide.Size = new System.Drawing.Size(36, 35);
+            this.btnHide.TabIndex = 5;
+            this.btnHide.Text = "-";
+            this.btnHide.UseVisualStyleBackColor = false;
+            // 
+            // btnExit
+            // 
+            this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnExit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnExit.ForeColor = System.Drawing.Color.Red;
+            this.btnExit.Location = new System.Drawing.Point(763, -2);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(36, 35);
+            this.btnExit.TabIndex = 3;
+            this.btnExit.Text = "X";
+            this.btnExit.UseVisualStyleBackColor = false;
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 347);
+            this.Controls.Add(this.panelName);
             this.Controls.Add(this.chcIgnoreTskbar);
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.label1);
@@ -177,6 +233,8 @@
             this.Name = "Settings";
             this.Text = "Settings";
             this.Load += new System.EventHandler(this.Settings_Load);
+            this.panelName.ResumeLayout(false);
+            this.panelName.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -193,5 +251,9 @@
         private System.Windows.Forms.Label label1;
         private PcComponentsMonitor.resources.customButtons btnApply;
         private System.Windows.Forms.CheckBox chcIgnoreTskbar;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panelName;
+        private System.Windows.Forms.Button btnHide;
+        private System.Windows.Forms.Button btnExit;
     }
 }

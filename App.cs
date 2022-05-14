@@ -47,7 +47,7 @@ namespace PcComponentsMonitor
 
                 //When cpu temps get too high it will send a warning
                 Properties.Settings.Default.Reload();
-                if(temperature > 75 && !sendedWarning_cpu && Properties.Settings.Default.sendMessage) 
+                if (temperature > 75 && !sendedWarning_cpu && Properties.Settings.Default.sendMessage)
                 {
                     new ToastContentBuilder()
                         .AddText("Warning!")
@@ -66,7 +66,8 @@ namespace PcComponentsMonitor
 
             //Sends warning message
             Properties.Settings.Default.Reload();
-            if(!sendedWarning_cpu_usage && (Math.Round(cpu_usage_f)) > 75f && Properties.Settings.Default.sendMessage){
+            if (!sendedWarning_cpu_usage && (Math.Round(cpu_usage_f)) > 75f && Properties.Settings.Default.sendMessage)
+            {
                 new ToastContentBuilder()
                         .AddText("Warning!")
                         .AddText("Your cpu usage is getting too high!")
@@ -81,7 +82,7 @@ namespace PcComponentsMonitor
 
             //Sends warning when RAM usage gets too high
             Properties.Settings.Default.Reload();
-            if(ram_usage_f > 75 && !sendedWarning_ram_usage && Properties.Settings.Default.sendMessage)
+            if (ram_usage_f > 75 && !sendedWarning_ram_usage && Properties.Settings.Default.sendMessage)
             {
                 new ToastContentBuilder()
                         .AddText("Warning!")
@@ -104,7 +105,7 @@ namespace PcComponentsMonitor
             }
 
             //Resets the timer
-            Timer timer  = sender as Timer;
+            Timer timer = sender as Timer;
             timer.Interval = 5000;
         }
 
@@ -130,7 +131,7 @@ namespace PcComponentsMonitor
                                       workingArea.Bottom - Size.Height);
             this.TopMost = true;
             this.ShowInTaskbar = false;
-            CPU_info.Location = new Point(0, 27);
+            pc_info.Location = new Point(0, 27);
 
             //Form postion
             switch (Properties.Settings.Default.Position)
@@ -138,7 +139,7 @@ namespace PcComponentsMonitor
                 case "Right, Bottom":
                     //When ignore taskbar is off
                     if (!Properties.Settings.Default.IgnoreTaskbar) this.Location = new Point(workingArea.Right - Size.Width, workingArea.Bottom - Size.Height);
-                    
+
                     //When ignore taskbar is on
                     else this.Location = new Point(Screen.PrimaryScreen.Bounds.Right - this.Width, Screen.PrimaryScreen.Bounds.Bottom - this.Height);
                     break;
@@ -148,7 +149,7 @@ namespace PcComponentsMonitor
                 case "Left, Bottom":
                     //When ignore taskbar is off
                     if (!Properties.Settings.Default.IgnoreTaskbar) this.Location = new Point(workingArea.Left, workingArea.Bottom - Size.Height);
-                    
+
                     //When ignore taskbar is on
                     else this.Location = new Point(Screen.PrimaryScreen.Bounds.Left, Screen.PrimaryScreen.Bounds.Bottom - this.Height);
                     break;
@@ -157,8 +158,38 @@ namespace PcComponentsMonitor
                     break;
             }
 
+            //Gets OS name
+            pc_name.Text = "OS name: " + (from x in new ManagementObjectSearcher("SELECT Caption FROM Win32_OperatingSystem").Get().Cast<ManagementObject>()
+                                          select x.GetPropertyValue("Caption")).FirstOrDefault().ToString();
+            //Gets cpu name
+            ManagementClass mc = new ManagementClass("win32_processor");
+            ManagementObjectCollection managCollec = mc.GetInstances();
+            foreach (ManagementObject managObj in managCollec)
+            {
+                //Gets cpu name
+                string cpuName = managObj.Properties["Name"].Value.ToString();
+                pc_cpu.Text = "CPU: " + cpuName;
+                break;
+            }
+            //Gets amount in GB of ram
+            ObjectQuery wql = new ObjectQuery("SELECT * FROM Win32_OperatingSystem");
+            ManagementObjectSearcher searcher1 = new ManagementObjectSearcher(wql);
+            ManagementObjectCollection results = searcher1.Get();
+            foreach (ManagementObject result in results)
+            {
+                pc_ram.Text = "RAM: " + Math.Round(double.Parse(result["TotalVisibleMemorySize"].ToString()) / 1048576, 2, MidpointRounding.ToEven) + "GB";
+            }
+            //Gets C:\Drive info
+            DriveInfo[] allDrive = DriveInfo.GetDrives();
+            foreach (DriveInfo drive in allDrive)
+            {
+                pc_os_drive.Text = "OS drive name: " + drive.VolumeLabel + " (" + drive.Name + ")";
+                break;
+            }
 
-            double temperature = 0;  
+
+
+            double temperature = 0;
             //Create new ManagementObjectSearcher
             ManagementObjectSearcher searcher = new ManagementObjectSearcher(@"root\WMI", "SELECT * FROM MSAcpi_ThermalZoneTemperature");
             foreach (ManagementObject obj in searcher.Get())
@@ -171,8 +202,7 @@ namespace PcComponentsMonitor
             //Will set the text to the temperatures
             cpu_temp.Text = "Temp: " + temperature.ToString() + "°C";
 
-            ManagementClass mc = new ManagementClass("win32_processor");
-            ManagementObjectCollection managCollec = mc.GetInstances();
+
             foreach (ManagementObject managObj in managCollec)
             {
                 //Thing to get the processor name (Idk what it does I just copied it.)
@@ -219,12 +249,12 @@ namespace PcComponentsMonitor
         private void timer2_Tick(object sender, EventArgs e)
         {
             //Sets to the top most
-            if(canBeTheTopMost) this.TopMost = true;
+            if (canBeTheTopMost) this.TopMost = true;
             //Dark mode
             Properties.Settings.Default.Reload();
             if (Properties.Settings.Default.Darkmode)
             {
-                
+
                 this.BackColor = Color.FromArgb(41, 41, 41);
                 this.ForeColor = Color.White;
                 panelName.ForeColor = Color.White;
@@ -237,9 +267,9 @@ namespace PcComponentsMonitor
                 {
                     cpu_temp.ForeColor = Color.White;
                 }
-                if(this.cpu_usage.ForeColor == Color.Black)
+                if (this.cpu_usage.ForeColor == Color.Black)
                 {
-                    cpu_usage.ForeColor= Color.White;
+                    cpu_usage.ForeColor = Color.White;
                 }
                 if (this.ram_usage.ForeColor == Color.Black)
                 {
@@ -255,7 +285,7 @@ namespace PcComponentsMonitor
             }
             else
             {
-                
+
                 this.BackColor = Color.White;
                 this.ForeColor = Color.Black;
                 panelName.ForeColor = Color.Black;
@@ -312,12 +342,19 @@ namespace PcComponentsMonitor
             canBeTheTopMost = false;
             form.FormClosing += new FormClosingEventHandler(SettingsExit);
         }
+        private void customButtons4_Click(object sender, EventArgs e)
+        {
+            Form form = new Settings();
+            form.Show();
+            canBeTheTopMost = false;
+            form.FormClosing += new FormClosingEventHandler(SettingsExit);
+        }
 
         //When user exits the settings
         private void SettingsExit(object sender, EventArgs e)
         {
             canBeTheTopMost = true;
-            if(reason != string.Empty && reason == "apply")
+            if (reason != string.Empty && reason == "apply")
             {
                 //reload settings
                 Properties.Settings.Default.Reload();
@@ -371,6 +408,16 @@ namespace PcComponentsMonitor
         {
             RAM_info.Location = new Point(0, 27);
             Drive_info.Location = new Point(0, 127);
+        }
+        private void customButtons1_Click(object sender, EventArgs e)
+        {
+            pc_info.Location = new Point(0, 127);
+            CPU_info.Location = new Point(0, 27);
+        }
+        private void previouse_cpu_Click(object sender, EventArgs e)
+        {
+            CPU_info.Location = new Point(0, 127);
+            pc_info.Location = new Point(0, 27);
         }
 
         //When user clicks hide button
@@ -497,5 +544,7 @@ namespace PcComponentsMonitor
                 drive_fullness.ForeColor = Color.Red;
             }
         }
+
+
     }
 }

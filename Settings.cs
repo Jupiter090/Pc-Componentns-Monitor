@@ -54,7 +54,7 @@ namespace PcComponentsMonitor
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            
+
             //Dark mode setting
             CheckBox check = sender as CheckBox;
 
@@ -100,7 +100,7 @@ namespace PcComponentsMonitor
             }
             CheckBox checkBox = sender as CheckBox;
             Properties.Settings.Default.IgnoreTaskbar = checkBox.Checked;
-            btnApply.Visible= true;
+            btnApply.Visible = true;
             Properties.Settings.Default.Save();
         }
     }
