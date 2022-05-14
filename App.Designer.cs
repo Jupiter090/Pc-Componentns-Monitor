@@ -38,14 +38,8 @@
             this.btnHide = new System.Windows.Forms.Button();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.CPU_info = new System.Windows.Forms.Panel();
-            this.previouse_cpu = new PcComponentsMonitor.resources.customButtons();
-            this.Next_cpu = new PcComponentsMonitor.resources.customButtons();
-            this.btnSettings = new PcComponentsMonitor.resources.customButtons();
             this.cpu_usage = new System.Windows.Forms.Label();
             this.RAM_info = new System.Windows.Forms.Panel();
-            this.Next_RAM = new PcComponentsMonitor.resources.customButtons();
-            this.Previouse_RAM = new PcComponentsMonitor.resources.customButtons();
-            this.customButtons3 = new PcComponentsMonitor.resources.customButtons();
             this.ram_usage = new System.Windows.Forms.Label();
             this.RAM = new System.Windows.Forms.Label();
             this.ram_name = new System.Windows.Forms.Label();
@@ -53,23 +47,31 @@
             this.Drive_info = new System.Windows.Forms.Panel();
             this.drive_fullness = new System.Windows.Forms.Label();
             this.drive_free_space = new System.Windows.Forms.Label();
-            this.Previouse_Drive = new PcComponentsMonitor.resources.customButtons();
-            this.customButtons2 = new PcComponentsMonitor.resources.customButtons();
             this.Drives = new System.Windows.Forms.Label();
             this.drive_name = new System.Windows.Forms.Label();
             this.pc_info = new System.Windows.Forms.Panel();
             this.pc_os_drive = new System.Windows.Forms.Label();
             this.pc_ram = new System.Windows.Forms.Label();
             this.pc_cpu = new System.Windows.Forms.Label();
-            this.next_pc = new PcComponentsMonitor.resources.customButtons();
-            this.customButtons4 = new PcComponentsMonitor.resources.customButtons();
             this.PC = new System.Windows.Forms.Label();
             this.pc_name = new System.Windows.Forms.Label();
+            this.next_pc = new PcComponentsMonitor.resources.customButtons();
+            this.customButtons4 = new PcComponentsMonitor.resources.customButtons();
+            this.previouse_cpu = new PcComponentsMonitor.resources.customButtons();
+            this.Next_cpu = new PcComponentsMonitor.resources.customButtons();
+            this.btnSettings = new PcComponentsMonitor.resources.customButtons();
+            this.Previouse_Drive = new PcComponentsMonitor.resources.customButtons();
+            this.customButtons2 = new PcComponentsMonitor.resources.customButtons();
+            this.Next_RAM = new PcComponentsMonitor.resources.customButtons();
+            this.Previouse_RAM = new PcComponentsMonitor.resources.customButtons();
+            this.customButtons3 = new PcComponentsMonitor.resources.customButtons();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelName.SuspendLayout();
             this.CPU_info.SuspendLayout();
             this.RAM_info.SuspendLayout();
             this.Drive_info.SuspendLayout();
             this.pc_info.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // cpu_name
@@ -127,7 +129,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 2);
+            this.label2.Location = new System.Drawing.Point(41, 2);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(279, 31);
             this.label2.TabIndex = 4;
@@ -136,6 +138,7 @@
             // panelName
             // 
             this.panelName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panelName.Controls.Add(this.pictureBox1);
             this.panelName.Controls.Add(this.btnHide);
             this.panelName.Controls.Add(this.btnExit);
             this.panelName.Controls.Add(this.label2);
@@ -180,66 +183,6 @@
             this.CPU_info.Size = new System.Drawing.Size(526, 90);
             this.CPU_info.TabIndex = 6;
             // 
-            // previouse_cpu
-            // 
-            this.previouse_cpu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.previouse_cpu.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.previouse_cpu.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.previouse_cpu.BorderRadius = 5;
-            this.previouse_cpu.BorderSize = 0;
-            this.previouse_cpu.FlatAppearance.BorderSize = 0;
-            this.previouse_cpu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.previouse_cpu.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.previouse_cpu.ForeColor = System.Drawing.Color.White;
-            this.previouse_cpu.Location = new System.Drawing.Point(442, 3);
-            this.previouse_cpu.Name = "previouse_cpu";
-            this.previouse_cpu.Size = new System.Drawing.Size(36, 36);
-            this.previouse_cpu.TabIndex = 8;
-            this.previouse_cpu.Text = "<";
-            this.previouse_cpu.TextdColor = System.Drawing.Color.White;
-            this.previouse_cpu.UseVisualStyleBackColor = false;
-            this.previouse_cpu.Click += new System.EventHandler(this.previouse_cpu_Click);
-            // 
-            // Next_cpu
-            // 
-            this.Next_cpu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Next_cpu.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Next_cpu.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.Next_cpu.BorderRadius = 5;
-            this.Next_cpu.BorderSize = 0;
-            this.Next_cpu.FlatAppearance.BorderSize = 0;
-            this.Next_cpu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Next_cpu.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Next_cpu.ForeColor = System.Drawing.Color.White;
-            this.Next_cpu.Location = new System.Drawing.Point(479, 3);
-            this.Next_cpu.Name = "Next_cpu";
-            this.Next_cpu.Size = new System.Drawing.Size(36, 36);
-            this.Next_cpu.TabIndex = 7;
-            this.Next_cpu.Text = ">";
-            this.Next_cpu.TextdColor = System.Drawing.Color.White;
-            this.Next_cpu.UseVisualStyleBackColor = false;
-            this.Next_cpu.Click += new System.EventHandler(this.Next_cpu_Click);
-            // 
-            // btnSettings
-            // 
-            this.btnSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnSettings.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnSettings.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnSettings.BorderRadius = 5;
-            this.btnSettings.BorderSize = 0;
-            this.btnSettings.FlatAppearance.BorderSize = 0;
-            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSettings.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnSettings.ForeColor = System.Drawing.Color.White;
-            this.btnSettings.Location = new System.Drawing.Point(398, 51);
-            this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(122, 36);
-            this.btnSettings.TabIndex = 6;
-            this.btnSettings.Text = "Settings";
-            this.btnSettings.TextdColor = System.Drawing.Color.White;
-            this.btnSettings.UseVisualStyleBackColor = false;
-            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
-            // 
             // cpu_usage
             // 
             this.cpu_usage.AutoSize = true;
@@ -262,66 +205,6 @@
             this.RAM_info.Name = "RAM_info";
             this.RAM_info.Size = new System.Drawing.Size(526, 90);
             this.RAM_info.TabIndex = 8;
-            // 
-            // Next_RAM
-            // 
-            this.Next_RAM.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Next_RAM.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Next_RAM.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.Next_RAM.BorderRadius = 5;
-            this.Next_RAM.BorderSize = 0;
-            this.Next_RAM.FlatAppearance.BorderSize = 0;
-            this.Next_RAM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Next_RAM.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Next_RAM.ForeColor = System.Drawing.Color.White;
-            this.Next_RAM.Location = new System.Drawing.Point(484, 3);
-            this.Next_RAM.Name = "Next_RAM";
-            this.Next_RAM.Size = new System.Drawing.Size(36, 36);
-            this.Next_RAM.TabIndex = 8;
-            this.Next_RAM.Text = ">";
-            this.Next_RAM.TextdColor = System.Drawing.Color.White;
-            this.Next_RAM.UseVisualStyleBackColor = false;
-            this.Next_RAM.Click += new System.EventHandler(this.Next_RAM_Click);
-            // 
-            // Previouse_RAM
-            // 
-            this.Previouse_RAM.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Previouse_RAM.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Previouse_RAM.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.Previouse_RAM.BorderRadius = 5;
-            this.Previouse_RAM.BorderSize = 0;
-            this.Previouse_RAM.FlatAppearance.BorderSize = 0;
-            this.Previouse_RAM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Previouse_RAM.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Previouse_RAM.ForeColor = System.Drawing.Color.White;
-            this.Previouse_RAM.Location = new System.Drawing.Point(445, 3);
-            this.Previouse_RAM.Name = "Previouse_RAM";
-            this.Previouse_RAM.Size = new System.Drawing.Size(36, 36);
-            this.Previouse_RAM.TabIndex = 7;
-            this.Previouse_RAM.Text = "<";
-            this.Previouse_RAM.TextdColor = System.Drawing.Color.White;
-            this.Previouse_RAM.UseVisualStyleBackColor = false;
-            this.Previouse_RAM.Click += new System.EventHandler(this.Previouse_RAM_Click);
-            // 
-            // customButtons3
-            // 
-            this.customButtons3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.customButtons3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.customButtons3.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.customButtons3.BorderRadius = 5;
-            this.customButtons3.BorderSize = 0;
-            this.customButtons3.FlatAppearance.BorderSize = 0;
-            this.customButtons3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customButtons3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.customButtons3.ForeColor = System.Drawing.Color.White;
-            this.customButtons3.Location = new System.Drawing.Point(398, 51);
-            this.customButtons3.Name = "customButtons3";
-            this.customButtons3.Size = new System.Drawing.Size(122, 36);
-            this.customButtons3.TabIndex = 6;
-            this.customButtons3.Text = "Settings";
-            this.customButtons3.TextdColor = System.Drawing.Color.White;
-            this.customButtons3.UseVisualStyleBackColor = false;
-            this.customButtons3.Click += new System.EventHandler(this.customButtons3_Click);
             // 
             // ram_usage
             // 
@@ -393,46 +276,6 @@
             this.drive_free_space.TabIndex = 8;
             this.drive_free_space.Text = "{drive_free_space}";
             // 
-            // Previouse_Drive
-            // 
-            this.Previouse_Drive.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Previouse_Drive.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Previouse_Drive.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.Previouse_Drive.BorderRadius = 5;
-            this.Previouse_Drive.BorderSize = 0;
-            this.Previouse_Drive.FlatAppearance.BorderSize = 0;
-            this.Previouse_Drive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Previouse_Drive.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Previouse_Drive.ForeColor = System.Drawing.Color.White;
-            this.Previouse_Drive.Location = new System.Drawing.Point(479, 3);
-            this.Previouse_Drive.Name = "Previouse_Drive";
-            this.Previouse_Drive.Size = new System.Drawing.Size(36, 36);
-            this.Previouse_Drive.TabIndex = 7;
-            this.Previouse_Drive.Text = "<";
-            this.Previouse_Drive.TextdColor = System.Drawing.Color.White;
-            this.Previouse_Drive.UseVisualStyleBackColor = false;
-            this.Previouse_Drive.Click += new System.EventHandler(this.Previouse_Drive_Click);
-            // 
-            // customButtons2
-            // 
-            this.customButtons2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.customButtons2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.customButtons2.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.customButtons2.BorderRadius = 5;
-            this.customButtons2.BorderSize = 0;
-            this.customButtons2.FlatAppearance.BorderSize = 0;
-            this.customButtons2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customButtons2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.customButtons2.ForeColor = System.Drawing.Color.White;
-            this.customButtons2.Location = new System.Drawing.Point(398, 51);
-            this.customButtons2.Name = "customButtons2";
-            this.customButtons2.Size = new System.Drawing.Size(122, 36);
-            this.customButtons2.TabIndex = 6;
-            this.customButtons2.Text = "Settings";
-            this.customButtons2.TextdColor = System.Drawing.Color.White;
-            this.customButtons2.UseVisualStyleBackColor = false;
-            this.customButtons2.Click += new System.EventHandler(this.customButtons2_Click);
-            // 
             // Drives
             // 
             this.Drives.AutoSize = true;
@@ -497,6 +340,26 @@
             this.pc_cpu.TabIndex = 8;
             this.pc_cpu.Text = "{pc_cpu}";
             // 
+            // PC
+            // 
+            this.PC.AutoSize = true;
+            this.PC.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.PC.Location = new System.Drawing.Point(15, 1);
+            this.PC.Name = "PC";
+            this.PC.Size = new System.Drawing.Size(31, 16);
+            this.PC.TabIndex = 2;
+            this.PC.Text = "PC:";
+            // 
+            // pc_name
+            // 
+            this.pc_name.AutoSize = true;
+            this.pc_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.pc_name.Location = new System.Drawing.Point(15, 17);
+            this.pc_name.Name = "pc_name";
+            this.pc_name.Size = new System.Drawing.Size(73, 16);
+            this.pc_name.TabIndex = 0;
+            this.pc_name.Text = "{pc_name}";
+            // 
             // next_pc
             // 
             this.next_pc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -537,25 +400,176 @@
             this.customButtons4.UseVisualStyleBackColor = false;
             this.customButtons4.Click += new System.EventHandler(this.customButtons4_Click);
             // 
-            // PC
+            // previouse_cpu
             // 
-            this.PC.AutoSize = true;
-            this.PC.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.PC.Location = new System.Drawing.Point(15, 1);
-            this.PC.Name = "PC";
-            this.PC.Size = new System.Drawing.Size(31, 16);
-            this.PC.TabIndex = 2;
-            this.PC.Text = "PC:";
+            this.previouse_cpu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.previouse_cpu.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.previouse_cpu.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.previouse_cpu.BorderRadius = 5;
+            this.previouse_cpu.BorderSize = 0;
+            this.previouse_cpu.FlatAppearance.BorderSize = 0;
+            this.previouse_cpu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.previouse_cpu.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.previouse_cpu.ForeColor = System.Drawing.Color.White;
+            this.previouse_cpu.Location = new System.Drawing.Point(442, 3);
+            this.previouse_cpu.Name = "previouse_cpu";
+            this.previouse_cpu.Size = new System.Drawing.Size(36, 36);
+            this.previouse_cpu.TabIndex = 8;
+            this.previouse_cpu.Text = "<";
+            this.previouse_cpu.TextdColor = System.Drawing.Color.White;
+            this.previouse_cpu.UseVisualStyleBackColor = false;
+            this.previouse_cpu.Click += new System.EventHandler(this.previouse_cpu_Click);
             // 
-            // pc_name
+            // Next_cpu
             // 
-            this.pc_name.AutoSize = true;
-            this.pc_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.pc_name.Location = new System.Drawing.Point(15, 17);
-            this.pc_name.Name = "pc_name";
-            this.pc_name.Size = new System.Drawing.Size(73, 16);
-            this.pc_name.TabIndex = 0;
-            this.pc_name.Text = "{pc_name}";
+            this.Next_cpu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Next_cpu.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Next_cpu.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.Next_cpu.BorderRadius = 5;
+            this.Next_cpu.BorderSize = 0;
+            this.Next_cpu.FlatAppearance.BorderSize = 0;
+            this.Next_cpu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Next_cpu.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.Next_cpu.ForeColor = System.Drawing.Color.White;
+            this.Next_cpu.Location = new System.Drawing.Point(479, 3);
+            this.Next_cpu.Name = "Next_cpu";
+            this.Next_cpu.Size = new System.Drawing.Size(36, 36);
+            this.Next_cpu.TabIndex = 7;
+            this.Next_cpu.Text = ">";
+            this.Next_cpu.TextdColor = System.Drawing.Color.White;
+            this.Next_cpu.UseVisualStyleBackColor = false;
+            this.Next_cpu.Click += new System.EventHandler(this.Next_cpu_Click);
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnSettings.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnSettings.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnSettings.BorderRadius = 5;
+            this.btnSettings.BorderSize = 0;
+            this.btnSettings.FlatAppearance.BorderSize = 0;
+            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSettings.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnSettings.ForeColor = System.Drawing.Color.White;
+            this.btnSettings.Location = new System.Drawing.Point(398, 51);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(122, 36);
+            this.btnSettings.TabIndex = 6;
+            this.btnSettings.Text = "Settings";
+            this.btnSettings.TextdColor = System.Drawing.Color.White;
+            this.btnSettings.UseVisualStyleBackColor = false;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
+            // 
+            // Previouse_Drive
+            // 
+            this.Previouse_Drive.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Previouse_Drive.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Previouse_Drive.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.Previouse_Drive.BorderRadius = 5;
+            this.Previouse_Drive.BorderSize = 0;
+            this.Previouse_Drive.FlatAppearance.BorderSize = 0;
+            this.Previouse_Drive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Previouse_Drive.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.Previouse_Drive.ForeColor = System.Drawing.Color.White;
+            this.Previouse_Drive.Location = new System.Drawing.Point(479, 3);
+            this.Previouse_Drive.Name = "Previouse_Drive";
+            this.Previouse_Drive.Size = new System.Drawing.Size(36, 36);
+            this.Previouse_Drive.TabIndex = 7;
+            this.Previouse_Drive.Text = "<";
+            this.Previouse_Drive.TextdColor = System.Drawing.Color.White;
+            this.Previouse_Drive.UseVisualStyleBackColor = false;
+            this.Previouse_Drive.Click += new System.EventHandler(this.Previouse_Drive_Click);
+            // 
+            // customButtons2
+            // 
+            this.customButtons2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.customButtons2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.customButtons2.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.customButtons2.BorderRadius = 5;
+            this.customButtons2.BorderSize = 0;
+            this.customButtons2.FlatAppearance.BorderSize = 0;
+            this.customButtons2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.customButtons2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.customButtons2.ForeColor = System.Drawing.Color.White;
+            this.customButtons2.Location = new System.Drawing.Point(398, 51);
+            this.customButtons2.Name = "customButtons2";
+            this.customButtons2.Size = new System.Drawing.Size(122, 36);
+            this.customButtons2.TabIndex = 6;
+            this.customButtons2.Text = "Settings";
+            this.customButtons2.TextdColor = System.Drawing.Color.White;
+            this.customButtons2.UseVisualStyleBackColor = false;
+            this.customButtons2.Click += new System.EventHandler(this.customButtons2_Click);
+            // 
+            // Next_RAM
+            // 
+            this.Next_RAM.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Next_RAM.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Next_RAM.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.Next_RAM.BorderRadius = 5;
+            this.Next_RAM.BorderSize = 0;
+            this.Next_RAM.FlatAppearance.BorderSize = 0;
+            this.Next_RAM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Next_RAM.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.Next_RAM.ForeColor = System.Drawing.Color.White;
+            this.Next_RAM.Location = new System.Drawing.Point(484, 3);
+            this.Next_RAM.Name = "Next_RAM";
+            this.Next_RAM.Size = new System.Drawing.Size(36, 36);
+            this.Next_RAM.TabIndex = 8;
+            this.Next_RAM.Text = ">";
+            this.Next_RAM.TextdColor = System.Drawing.Color.White;
+            this.Next_RAM.UseVisualStyleBackColor = false;
+            this.Next_RAM.Click += new System.EventHandler(this.Next_RAM_Click);
+            // 
+            // Previouse_RAM
+            // 
+            this.Previouse_RAM.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Previouse_RAM.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Previouse_RAM.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.Previouse_RAM.BorderRadius = 5;
+            this.Previouse_RAM.BorderSize = 0;
+            this.Previouse_RAM.FlatAppearance.BorderSize = 0;
+            this.Previouse_RAM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Previouse_RAM.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.Previouse_RAM.ForeColor = System.Drawing.Color.White;
+            this.Previouse_RAM.Location = new System.Drawing.Point(445, 3);
+            this.Previouse_RAM.Name = "Previouse_RAM";
+            this.Previouse_RAM.Size = new System.Drawing.Size(36, 36);
+            this.Previouse_RAM.TabIndex = 7;
+            this.Previouse_RAM.Text = "<";
+            this.Previouse_RAM.TextdColor = System.Drawing.Color.White;
+            this.Previouse_RAM.UseVisualStyleBackColor = false;
+            this.Previouse_RAM.Click += new System.EventHandler(this.Previouse_RAM_Click);
+            // 
+            // customButtons3
+            // 
+            this.customButtons3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.customButtons3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.customButtons3.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.customButtons3.BorderRadius = 5;
+            this.customButtons3.BorderSize = 0;
+            this.customButtons3.FlatAppearance.BorderSize = 0;
+            this.customButtons3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.customButtons3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.customButtons3.ForeColor = System.Drawing.Color.White;
+            this.customButtons3.Location = new System.Drawing.Point(398, 51);
+            this.customButtons3.Name = "customButtons3";
+            this.customButtons3.Size = new System.Drawing.Size(122, 36);
+            this.customButtons3.TabIndex = 6;
+            this.customButtons3.Text = "Settings";
+            this.customButtons3.TextdColor = System.Drawing.Color.White;
+            this.customButtons3.UseVisualStyleBackColor = false;
+            this.customButtons3.Click += new System.EventHandler(this.customButtons3_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(46, 31);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
             // 
             // App
             // 
@@ -584,6 +598,7 @@
             this.Drive_info.PerformLayout();
             this.pc_info.ResumeLayout(false);
             this.pc_info.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -625,5 +640,6 @@
         private System.Windows.Forms.Label pc_ram;
         private System.Windows.Forms.Label pc_os_drive;
         private resources.customButtons previouse_cpu;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
