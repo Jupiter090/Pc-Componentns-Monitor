@@ -16,6 +16,8 @@ namespace PcComponentsMonitor
     public partial class Settings : Form
     {
         private bool dont = false;
+        private bool enableMoving = false;
+        private Point initialClickedPoint = new Point();
         public Settings()
         {
             InitializeComponent();
@@ -64,11 +66,23 @@ namespace PcComponentsMonitor
             {
                 this.BackColor = Color.FromArgb(41, 41, 41);
                 this.ForeColor = Color.White;
+                this.panelName.ForeColor = ForeColor;
+                this.btnExit.BackColor = Color.FromArgb(55, 55, 55);
+                this.btnExit.FlatAppearance.BorderColor = Color.FromArgb(55, 55, 55);
+                this.btnHide.BackColor = Color.FromArgb(55, 55, 55);
+                this.btnHide.FlatAppearance.BorderColor = Color.FromArgb(55, 55, 55);
+                this.panelName.BackColor = Color.FromArgb(55, 55, 55);
             }
             else
             {
                 this.BackColor = Color.White;
                 this.ForeColor = Color.Black;
+                this.panelName.ForeColor = ForeColor;
+                this.btnExit.BackColor = Color.FromArgb(224, 224, 224);
+                this.btnExit.FlatAppearance.BorderColor = Color.FromArgb(224, 224, 224);
+                this.btnHide.BackColor = Color.FromArgb(224, 224, 224);
+                this.btnHide.FlatAppearance.BorderColor = Color.FromArgb(224, 224, 224);
+                this.panelName.BackColor = Color.FromArgb(224, 224, 224);
             }
         }
 
@@ -102,6 +116,36 @@ namespace PcComponentsMonitor
             Properties.Settings.Default.IgnoreTaskbar = checkBox.Checked;
             btnApply.Visible = true;
             Properties.Settings.Default.Save();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnHide_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void panelName_MouseDown(object sender, MouseEventArgs e)
+        {
+            enableMoving = true;
+            initialClickedPoint = e.Location;
+        }
+
+        private void panelName_MouseUp(object sender, MouseEventArgs e)
+        {
+            enableMoving = false;
+        }
+
+        private void panelName_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (enableMoving)
+            {
+                this.Location = new Point(e.X + this.Left - initialClickedPoint.X,
+                        e.Y + this.Top - initialClickedPoint.Y);
+            }
         }
     }
 }

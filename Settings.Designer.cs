@@ -186,6 +186,9 @@
             this.panelName.Name = "panelName";
             this.panelName.Size = new System.Drawing.Size(799, 33);
             this.panelName.TabIndex = 23;
+            this.panelName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelName_MouseDown);
+            this.panelName.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelName_MouseMove);
+            this.panelName.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelName_MouseUp);
             // 
             // btnHide
             // 
@@ -200,6 +203,7 @@
             this.btnHide.TabIndex = 5;
             this.btnHide.Text = "-";
             this.btnHide.UseVisualStyleBackColor = false;
+            this.btnHide.Click += new System.EventHandler(this.btnHide_Click);
             // 
             // btnExit
             // 
@@ -214,6 +218,7 @@
             this.btnExit.TabIndex = 3;
             this.btnExit.Text = "X";
             this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // Settings
             // 
@@ -229,6 +234,7 @@
             this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.chbxSendNotifactionns);
             this.Controls.Add(this.txtSettings);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Settings";
             this.Text = "Settings";
