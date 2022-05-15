@@ -21,3 +21,4 @@ If you found please report it on GitHub here in issues.
 - [x] Hide app setting
 - [x] Disable/Enable notifications
 - [x] Chaneg postion of window setting
+- [x] Not have different border styles in main app and in settings
