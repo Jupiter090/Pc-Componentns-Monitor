@@ -70,5 +70,53 @@ namespace PcComponentsMonitor.Properties {
                 this["IgnoreTaskbar"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool WelcomeUser {
+            get {
+                return ((bool)(this["WelcomeUser"]));
+            }
+            set {
+                this["WelcomeUser"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ChangeDefaultPosition {
+            get {
+                return ((bool)(this["ChangeDefaultPosition"]));
+            }
+            set {
+                this["ChangeDefaultPosition"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public float DefaultPosX {
+            get {
+                return ((float)(this["DefaultPosX"]));
+            }
+            set {
+                this["DefaultPosX"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public float DefualtPosY {
+            get {
+                return ((float)(this["DefualtPosY"]));
+            }
+            set {
+                this["DefualtPosY"] = value;
+            }
+        }
     }
 }

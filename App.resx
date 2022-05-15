@@ -124,7 +124,7 @@
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABAAAAAQACAYAAAB/HSuDAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wgAADsIBFShKgAAA/7JJREFUeF7svQe4nOV9pv+pSyAECJAQSKKJJoQKQggEkowNxsb03kXvzRhs4544
+        vwAADr8BOAVTJAAA/7JJREFUeF7svQe4nOV9pv+pSyAECJAQSKKJJoQKQggEkowNxsb03kXvzRhs4544
         xUmcnk2ySTbZdTZ1/5vsprFpduJUx7HjEhdsijEYECBQb6fM//cM5x1+evW8877fmVGd576u+5I0Gs3M
         +WY0o+fWnHMqIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQggh
         hBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQggh
@@ -3503,6 +3503,9 @@
         //8AAP//AADj/wAA4R8AAOAHAADgBwAA4AcAAOAHAADgBwAA4AcAAOAHAADw/wAA+/8AAP//AAA=
 </value>
   </data>
+  <metadata name="colorDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>352, 17</value>
+  </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAYAAAAAAAEAIAACIwAAZgAAAICAAAABACAAKAgBAGgjAABAQAAAAQAgAChCAACQKwEAMDAAAAEA

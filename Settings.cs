@@ -38,7 +38,6 @@ namespace PcComponentsMonitor
                 this.BackColor = Color.FromArgb(41, 41, 41);
                 this.ForeColor = Color.White;
             }
-
         }
 
         private void chbxSendNotifactionns_CheckedChanged(object sender, EventArgs e)
@@ -86,6 +85,7 @@ namespace PcComponentsMonitor
             }
         }
 
+        //When user change position setting
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (dont)
@@ -96,15 +96,26 @@ namespace PcComponentsMonitor
             ComboBox comboBox = sender as ComboBox;
             btnApply.Visible = true;
             Properties.Settings.Default.Position = comboBox.Text;
+            Properties.Settings.Default.DefualtPosY = 0;
+            Properties.Settings.Default.DefaultPosX = 0;
             Properties.Settings.Default.Save();
         }
 
+        //Button apply click event
         private void btnApply_Click(object sender, EventArgs e)
         {
+            if (Properties.Settings.Default.ChangeDefaultPosition)
+            {
+                Properties.Settings.Default.ChangeDefaultPosition = false;
+                Properties.Settings.Default.Save();
+                App.reason = "change pos and apply";
+                this.Close();
+            }
             App.reason = "apply";
             this.Close();
         }
 
+        //Button ignore taskbar click event
         private void chcIgnoreTskbar_CheckedChanged(object sender, EventArgs e)
         {
             if (dont)
@@ -118,16 +129,19 @@ namespace PcComponentsMonitor
             Properties.Settings.Default.Save();
         }
 
+        //Button exit click event
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        //Button hide click event 
         private void btnHide_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
 
+        //When user whants to move the window
         private void panelName_MouseDown(object sender, MouseEventArgs e)
         {
             enableMoving = true;
@@ -146,6 +160,14 @@ namespace PcComponentsMonitor
                 this.Location = new Point(e.X + this.Left - initialClickedPoint.X,
                         e.Y + this.Top - initialClickedPoint.Y);
             }
+        }
+
+        //Let user to change defualt position
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ChangeDefaultPosition = true;
+            Properties.Settings.Default.Save();
+            btnApply.Visible=true;
         }
     }
 }

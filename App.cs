@@ -24,6 +24,9 @@ namespace PcComponentsMonitor
         private bool sendedWarning_ram_usage = false;
         public static bool canBeTheTopMost = true;
         public static string reason = string.Empty;
+        private static bool enableMoving = false;
+        private static Point initialClickedPoint;
+
         public App()
         {
             InitializeComponent();
@@ -124,6 +127,7 @@ namespace PcComponentsMonitor
                 btnHide.FlatAppearance.BorderColor = Color.FromArgb(55, 55, 55);
             }
 
+
             //Sets the styles
             this.FormBorderStyle = FormBorderStyle.None;
             Rectangle workingArea = Screen.GetWorkingArea(this);
@@ -134,28 +138,38 @@ namespace PcComponentsMonitor
             pc_info.Location = new Point(0, 27);
 
             //Form postion
-            switch (Properties.Settings.Default.Position)
+            if(Properties.Settings.Default.DefaultPosX != 0 && Properties.Settings.Default.DefualtPosY != 0)
             {
-                case "Right, Bottom":
-                    //When ignore taskbar is off
-                    if (!Properties.Settings.Default.IgnoreTaskbar) this.Location = new Point(workingArea.Right - Size.Width, workingArea.Bottom - Size.Height);
+                Point point = new Point();
+                point.X = (int)Properties.Settings.Default.DefaultPosX;
+                point.Y = (int)Properties.Settings.Default.DefualtPosY;
+                this.Location = point;
+            }
+            else
+            {
+                switch (Properties.Settings.Default.Position)
+                {
+                    case "Right, Bottom":
+                        //When ignore taskbar is off
+                        if (!Properties.Settings.Default.IgnoreTaskbar) this.Location = new Point(workingArea.Right - Size.Width, workingArea.Bottom - Size.Height);
 
-                    //When ignore taskbar is on
-                    else this.Location = new Point(Screen.PrimaryScreen.Bounds.Right - this.Width, Screen.PrimaryScreen.Bounds.Bottom - this.Height);
-                    break;
-                case "Right, Top":
-                    this.Location = new Point(Screen.PrimaryScreen.Bounds.Right - this.Width, 0);
-                    break;
-                case "Left, Bottom":
-                    //When ignore taskbar is off
-                    if (!Properties.Settings.Default.IgnoreTaskbar) this.Location = new Point(workingArea.Left, workingArea.Bottom - Size.Height);
+                        //When ignore taskbar is on
+                        else this.Location = new Point(Screen.PrimaryScreen.Bounds.Right - this.Width, Screen.PrimaryScreen.Bounds.Bottom - this.Height);
+                        break;
+                    case "Right, Top":
+                        this.Location = new Point(Screen.PrimaryScreen.Bounds.Right - this.Width, 0);
+                        break;
+                    case "Left, Bottom":
+                        //When ignore taskbar is off
+                        if (!Properties.Settings.Default.IgnoreTaskbar) this.Location = new Point(workingArea.Left, workingArea.Bottom - Size.Height);
 
-                    //When ignore taskbar is on
-                    else this.Location = new Point(Screen.PrimaryScreen.Bounds.Left, Screen.PrimaryScreen.Bounds.Bottom - this.Height);
-                    break;
-                case "Left, Top":
-                    this.Location = new Point(0, 0);
-                    break;
+                        //When ignore taskbar is on
+                        else this.Location = new Point(Screen.PrimaryScreen.Bounds.Left, Screen.PrimaryScreen.Bounds.Bottom - this.Height);
+                        break;
+                    case "Left, Top":
+                        this.Location = new Point(0, 0);
+                        break;
+                }
             }
 
             //Gets OS name
@@ -238,6 +252,14 @@ namespace PcComponentsMonitor
                 drive_fullness.Text = "Fullness: " + Math.Round(driveUsedPercentage) + "%";
                 ChangeDriveUsedColor(Math.Round(driveUsedPercentage));
                 break;
+            }
+
+            //Shows welcome message box
+            if (Properties.Settings.Default.WelcomeUser)
+            {
+                MessageBox.Show("Welcome in PC Components Monitor where you can monitor your pc components. Try it your self!", "Welcome", MessageBoxButtons.OK);
+                Properties.Settings.Default.WelcomeUser = false;
+                Properties.Settings.Default.Save();
             }
         }
 
@@ -384,6 +406,13 @@ namespace PcComponentsMonitor
                         break;
                 }
                 reason = string.Empty;
+            }
+            //When user change the pos
+            else if (reason == "change pos and apply")
+            {
+                Properties.Settings.Default.DefaultPosX = this.Location.X;
+                Properties.Settings.Default.DefualtPosY = this.Location.Y;
+                Properties.Settings.Default.Save();
             }
         }
 
@@ -545,6 +574,26 @@ namespace PcComponentsMonitor
             }
         }
 
+        //Let user to change default position
+        private void panelName_MouseDown(object sender, MouseEventArgs e)
+        {
+            enableMoving = true;
+            initialClickedPoint = e.Location;
+        }
 
+        private void panelName_MouseUp(object sender, MouseEventArgs e)
+        {
+            enableMoving = false;
+        }
+
+        private void panelName_MouseMove(object sender, MouseEventArgs e)
+        {
+            Properties.Settings.Default.Reload();
+            if (enableMoving && Properties.Settings.Default.ChangeDefaultPosition)
+            {
+                this.Location = new Point(e.X + this.Left - initialClickedPoint.X,
+                        e.Y + this.Top - initialClickedPoint.Y);
+            }
+        }
     }
 }
