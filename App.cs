@@ -257,7 +257,7 @@ namespace PcComponentsMonitor
             //Shows welcome message box
             if (Properties.Settings.Default.WelcomeUser)
             {
-                MessageBox.Show("Welcome in PC Components Monitor where you can monitor your pc components. Try it your self!", "Welcome", MessageBoxButtons.OK);
+                MessageBox.Show("Thank you for downloading PC Components Monitor! You can now try features by yourself.", "Welcome", MessageBoxButtons.OK);
                 Properties.Settings.Default.WelcomeUser = false;
                 Properties.Settings.Default.Save();
             }

@@ -41,11 +41,16 @@
             this.iconName = new System.Windows.Forms.PictureBox();
             this.btnHide = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.imgHelpChngDfltPos = new System.Windows.Forms.PictureBox();
+            this.panelHelpChngDfltPos = new PcComponentsMonitor.customPanels();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnApply = new PcComponentsMonitor.resources.customButtons();
             this.btnSettings = new PcComponentsMonitor.resources.customButtons();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.panelName.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgHelpChngDfltPos)).BeginInit();
+            this.panelHelpChngDfltPos.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtSettings
@@ -198,6 +203,57 @@
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.checkBox2.Location = new System.Drawing.Point(21, 266);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(288, 33);
+            this.checkBox2.TabIndex = 24;
+            this.checkBox2.Text = "Change defualt position";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
+            // imgHelpChngDfltPos
+            // 
+            this.imgHelpChngDfltPos.Cursor = System.Windows.Forms.Cursors.Help;
+            this.imgHelpChngDfltPos.Image = ((System.Drawing.Image)(resources.GetObject("imgHelpChngDfltPos.Image")));
+            this.imgHelpChngDfltPos.Location = new System.Drawing.Point(327, 261);
+            this.imgHelpChngDfltPos.Name = "imgHelpChngDfltPos";
+            this.imgHelpChngDfltPos.Size = new System.Drawing.Size(35, 35);
+            this.imgHelpChngDfltPos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgHelpChngDfltPos.TabIndex = 25;
+            this.imgHelpChngDfltPos.TabStop = false;
+            this.imgHelpChngDfltPos.MouseLeave += new System.EventHandler(this.imgHelpIgnerTskbr_MouseLeave);
+            this.imgHelpChngDfltPos.MouseHover += new System.EventHandler(this.imgHelpIgnerTskbr_MouseHover);
+            // 
+            // panelHelpChngDfltPos
+            // 
+            this.panelHelpChngDfltPos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panelHelpChngDfltPos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panelHelpChngDfltPos.BorderColor = System.Drawing.Color.Black;
+            this.panelHelpChngDfltPos.BorderRadius = 20;
+            this.panelHelpChngDfltPos.BorderSize = 1;
+            this.panelHelpChngDfltPos.Controls.Add(this.label2);
+            this.panelHelpChngDfltPos.ForeColor = System.Drawing.Color.Black;
+            this.panelHelpChngDfltPos.Location = new System.Drawing.Point(358, 197);
+            this.panelHelpChngDfltPos.Name = "panelHelpChngDfltPos";
+            this.panelHelpChngDfltPos.Size = new System.Drawing.Size(210, 66);
+            this.panelHelpChngDfltPos.TabIndex = 26;
+            this.panelHelpChngDfltPos.TextdColor = System.Drawing.Color.Black;
+            this.panelHelpChngDfltPos.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(13, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(175, 48);
+            this.label2.TabIndex = 27;
+            this.label2.Text = "When is clicked you \r\ncan move main window\r\nand then click apply to save.";
+            // 
             // btnApply
             // 
             this.btnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -210,7 +266,7 @@
             this.btnApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnApply.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnApply.ForeColor = System.Drawing.Color.White;
-            this.btnApply.Location = new System.Drawing.Point(431, 298);
+            this.btnApply.Location = new System.Drawing.Point(431, 351);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(214, 37);
             this.btnApply.TabIndex = 21;
@@ -232,7 +288,7 @@
             this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSettings.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnSettings.ForeColor = System.Drawing.Color.White;
-            this.btnSettings.Location = new System.Drawing.Point(651, 298);
+            this.btnSettings.Location = new System.Drawing.Point(651, 351);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(137, 37);
             this.btnSettings.TabIndex = 7;
@@ -241,23 +297,13 @@
             this.btnSettings.UseVisualStyleBackColor = false;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBox2.Location = new System.Drawing.Point(21, 266);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(288, 33);
-            this.checkBox2.TabIndex = 24;
-            this.checkBox2.Text = "Change defualt position";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
-            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 347);
+            this.ClientSize = new System.Drawing.Size(800, 400);
+            this.Controls.Add(this.panelHelpChngDfltPos);
+            this.Controls.Add(this.imgHelpChngDfltPos);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.panelName);
             this.Controls.Add(this.chcIgnoreTskbar);
@@ -276,6 +322,9 @@
             this.panelName.ResumeLayout(false);
             this.panelName.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgHelpChngDfltPos)).EndInit();
+            this.panelHelpChngDfltPos.ResumeLayout(false);
+            this.panelHelpChngDfltPos.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -298,5 +347,8 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.PictureBox iconName;
         private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.PictureBox imgHelpChngDfltPos;
+        private customPanels panelHelpChngDfltPos;
+        private System.Windows.Forms.Label label2;
     }
 }

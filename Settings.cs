@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Mail;
 using System.Net;
+using System.Drawing.Drawing2D;
 
 namespace PcComponentsMonitor
 {
@@ -168,6 +169,16 @@ namespace PcComponentsMonitor
             Properties.Settings.Default.ChangeDefaultPosition = true;
             Properties.Settings.Default.Save();
             btnApply.Visible=true;
+        }
+
+        private void imgHelpIgnerTskbr_MouseHover(object sender, EventArgs e)
+        {
+            panelHelpChngDfltPos.Visible = true;
+        }
+
+        private void imgHelpIgnerTskbr_MouseLeave(object sender, EventArgs e)
+        {
+            panelHelpChngDfltPos.Visible = false;
         }
     }
 }
