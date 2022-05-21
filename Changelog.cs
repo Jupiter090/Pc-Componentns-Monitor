@@ -70,6 +70,20 @@ namespace PcComponentsMonitor
                     txtChangelog.Text = sr.ReadToEnd().Replace("\n", Environment.NewLine);
                 }
             }
+            //Darkmode
+            if (Properties.Settings.Default.Darkmode)
+            {
+                this.BackColor = Color.FromArgb(41, 41, 41);
+                this.ForeColor = Color.White;
+                txtChangelog.BackColor = Color.FromArgb(41, 41, 41);
+                txtChangelog.ForeColor = Color.White;
+                this.panelName.ForeColor = ForeColor;
+                this.btnExit.BackColor = Color.FromArgb(55, 55, 55);
+                this.btnExit.FlatAppearance.BorderColor = Color.FromArgb(55, 55, 55);
+                this.btnHide.BackColor = Color.FromArgb(55, 55, 55);
+                this.btnHide.FlatAppearance.BorderColor = Color.FromArgb(55, 55, 55);
+                this.panelName.BackColor = Color.FromArgb(55, 55, 55);
+            }
         }
 
         //Moving window functions

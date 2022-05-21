@@ -19,7 +19,9 @@ namespace PcComponentsMonitor
     {
         PerformanceCounter cpuCounter;
         PerformanceCounter ramCounter;
-        PerformanceCounter gpuCounter;
+        PerformanceCounter ramCounter2;
+        PerformanceCounter driveCounter;
+        PerformanceCounter driveCounter2;
 
         private bool sendedWarning_cpu = false;
         private bool sendedWarning_cpu_usage = false;
@@ -35,6 +37,9 @@ namespace PcComponentsMonitor
             //Cpu and ram counters
             cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
             ramCounter = new PerformanceCounter("Memory", "% Committed Bytes In Use");
+            ramCounter2 = new PerformanceCounter("Memory", "Available MBytes");
+            driveCounter = new PerformanceCounter("PhysicalDisk", "Disk Read Bytes/sec", "_Total");
+            driveCounter2 = new PerformanceCounter("PhysicalDisk", "Disk Write Bytes/sec", "_Total");
         }
 
 
@@ -81,9 +86,17 @@ namespace PcComponentsMonitor
                 sendedWarning_cpu_usage = true;
             }
 
+            //Updates all available ram
+            ManagementObjectSearcher ramAll = new ManagementObjectSearcher("SELECT * FROM Win32_OperatingSystem");
+            foreach (ManagementObject obj in ramAll.Get())
+            {
+                ram_free_gb.Text = "Free: " + Math.Round(ramCounter2.NextValue() / 1024) + "GB/" + Math.Round(double.Parse(obj["TotalVisibleMemorySize"].ToString()) / 1048576, 2, MidpointRounding.ToEven) + "GB";
+            }
+
             //Updates ram usage
             double ram_usage_f = Math.Round(ramCounter.NextValue());
             ram_usage.Text = "Usage: " + ram_usage_f.ToString() + "%";
+
             ChangeRAMUSageColor(ram_usage_f);
 
             //Sends warning when RAM usage gets too high
@@ -109,6 +122,10 @@ namespace PcComponentsMonitor
                 ChangeDriveUsedColor(Math.Round(driveUsedPercentage));
                 break;    
             }
+            //Gets read and write speed of drive
+            double write = driveCounter2.NextValue();
+            double read = driveCounter.NextValue();
+            drive_read_write.Text = "Read/Write: " + Math.Round(read / 1024, 2)  + "kB/s / " + Math.Round(write / 1024, 2) + "kB/s";
 
             //Resets the timer
             Timer timer = sender as Timer;
@@ -237,6 +254,14 @@ namespace PcComponentsMonitor
             foreach (ManagementObject obj in ramObject.Get())
             {
                 ram_name.Text = "Manufacturer: " + obj["Manufacturer"].ToString();
+                
+            }
+
+            //Gets all available ram
+            ManagementObjectSearcher ramAll = new ManagementObjectSearcher("SELECT * FROM Win32_OperatingSystem");
+            foreach (ManagementObject obj in ramAll.Get())
+            {
+                ram_free_gb.Text = "Free: " + Math.Round(ramCounter2.NextValue() / 1024) + "GB/" + Math.Round(double.Parse(obj["TotalVisibleMemorySize"].ToString()) / 1048576, 2, MidpointRounding.ToEven) + "GB";
             }
 
             //Gets ram usage
@@ -258,15 +283,10 @@ namespace PcComponentsMonitor
                 ChangeDriveUsedColor(Math.Round(driveUsedPercentage));
                 break;
             }
-
-            //Gets gpu information
-            ManagementObjectSearcher gpuObject = new ManagementObjectSearcher("select * from Win32_VideoController");
-            foreach (ManagementObject obj in gpuObject.Get())
-            {
-                gpu_name.Text = "Name: " + obj["Name"];
-                break;
-
-            }
+            //Gets read and write speed of drive
+            double write = driveCounter2.NextValue();
+            double read = driveCounter.NextValue();
+            drive_read_write.Text = "Read/Write: " + Math.Round(read / 1024, 2) + "kB/s / " + Math.Round(write / 1024, 2) + "kB/s"; 
 
             //Shows welcome message box
             if (Properties.Settings.Default.WelcomeUser)
@@ -542,23 +562,28 @@ namespace PcComponentsMonitor
             if (usage < 25f)
             {
                 ram_usage.ForeColor = this.ForeColor;
+                ram_free_gb.ForeColor = this.ForeColor;
                 sendedWarning_ram_usage = false;
             }
             else if (usage > 25f && usage < 50f)
             {
                 ram_usage.ForeColor = Color.Orange;
+                ram_free_gb.ForeColor = Color.Orange;
                 sendedWarning_ram_usage = false;
             }
             else if (usage > 50f && usage < 75f)
             {
                 ram_usage.ForeColor = Color.DarkOrange;
+                ram_free_gb.ForeColor = Color.DarkOrange;
             }
             else if (usage > 75f && usage < 90f)
             {
                 ram_usage.ForeColor = Color.OrangeRed;
+                ram_free_gb.ForeColor = Color.OrangeRed;
             }
             else if (usage > 90f && usage <= 100f)
             {
+                ram_usage.ForeColor = Color.Red;
                 ram_usage.ForeColor = Color.Red;
             }
         }

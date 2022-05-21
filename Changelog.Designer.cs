@@ -63,7 +63,7 @@
             this.panelName.ForeColor = System.Drawing.Color.Black;
             this.panelName.Location = new System.Drawing.Point(0, 0);
             this.panelName.Name = "panelName";
-            this.panelName.Size = new System.Drawing.Size(843, 33);
+            this.panelName.Size = new System.Drawing.Size(1193, 33);
             this.panelName.TabIndex = 24;
             this.panelName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ClickWindow);
             this.panelName.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveWindow);
@@ -76,7 +76,7 @@
             this.btnHide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHide.Font = new System.Drawing.Font("Segoe UI Black", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnHide.ForeColor = System.Drawing.Color.DimGray;
-            this.btnHide.Location = new System.Drawing.Point(765, -2);
+            this.btnHide.Location = new System.Drawing.Point(1115, 0);
             this.btnHide.Name = "btnHide";
             this.btnHide.Size = new System.Drawing.Size(36, 35);
             this.btnHide.TabIndex = 5;
@@ -91,7 +91,7 @@
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnExit.ForeColor = System.Drawing.Color.Red;
-            this.btnExit.Location = new System.Drawing.Point(807, -2);
+            this.btnExit.Location = new System.Drawing.Point(1157, 0);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(36, 35);
             this.btnExit.TabIndex = 3;
@@ -121,7 +121,7 @@
             this.txtChangelog.Name = "txtChangelog";
             this.txtChangelog.ReadOnly = true;
             this.txtChangelog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtChangelog.Size = new System.Drawing.Size(850, 425);
+            this.txtChangelog.Size = new System.Drawing.Size(1200, 668);
             this.txtChangelog.TabIndex = 25;
             this.txtChangelog.Text = "Changelog\r\n";
             this.txtChangelog.Enter += new System.EventHandler(this.textBox1_Enter);
@@ -130,7 +130,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(843, 450);
+            this.ClientSize = new System.Drawing.Size(1193, 688);
             this.Controls.Add(this.panelName);
             this.Controls.Add(this.txtChangelog);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
