@@ -48,10 +48,17 @@
             this.btnApply = new PcComponentsMonitor.resources.customButtons();
             this.btnSettings = new PcComponentsMonitor.resources.customButtons();
             this.btnChangelog = new PcComponentsMonitor.resources.customButtons();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.pnlHelpDefPnl = new PcComponentsMonitor.customPanels();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelName.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgHelpChngDfltPos)).BeginInit();
             this.panelHelpChngDfltPos.SuspendLayout();
+            this.pnlHelpDefPnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtSettings
@@ -254,6 +261,7 @@
             this.label2.Size = new System.Drawing.Size(175, 48);
             this.label2.TabIndex = 27;
             this.label2.Text = "When is clicked you \r\ncan move main window\r\nand then click apply to save.";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnApply
             // 
@@ -267,7 +275,7 @@
             this.btnApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnApply.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnApply.ForeColor = System.Drawing.Color.White;
-            this.btnApply.Location = new System.Drawing.Point(431, 351);
+            this.btnApply.Location = new System.Drawing.Point(431, 395);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(214, 37);
             this.btnApply.TabIndex = 21;
@@ -289,7 +297,7 @@
             this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSettings.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnSettings.ForeColor = System.Drawing.Color.White;
-            this.btnSettings.Location = new System.Drawing.Point(651, 351);
+            this.btnSettings.Location = new System.Drawing.Point(651, 395);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(137, 37);
             this.btnSettings.TabIndex = 7;
@@ -310,7 +318,7 @@
             this.btnChangelog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChangelog.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnChangelog.ForeColor = System.Drawing.Color.White;
-            this.btnChangelog.Location = new System.Drawing.Point(12, 351);
+            this.btnChangelog.Location = new System.Drawing.Point(12, 395);
             this.btnChangelog.Name = "btnChangelog";
             this.btnChangelog.Size = new System.Drawing.Size(197, 37);
             this.btnChangelog.TabIndex = 27;
@@ -319,11 +327,79 @@
             this.btnChangelog.UseVisualStyleBackColor = false;
             this.btnChangelog.Click += new System.EventHandler(this.btnChangelog_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.Location = new System.Drawing.Point(15, 302);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(156, 31);
+            this.label3.TabIndex = 29;
+            this.label3.Text = "Default panel:";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "PC",
+            "CPU",
+            "RAM",
+            "Drive"});
+            this.comboBox2.Location = new System.Drawing.Point(24, 336);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(219, 24);
+            this.comboBox2.TabIndex = 28;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            // 
+            // pnlHelpDefPnl
+            // 
+            this.pnlHelpDefPnl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pnlHelpDefPnl.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pnlHelpDefPnl.BorderColor = System.Drawing.Color.Black;
+            this.pnlHelpDefPnl.BorderRadius = 20;
+            this.pnlHelpDefPnl.BorderSize = 1;
+            this.pnlHelpDefPnl.Controls.Add(this.label4);
+            this.pnlHelpDefPnl.ForeColor = System.Drawing.Color.Black;
+            this.pnlHelpDefPnl.Location = new System.Drawing.Point(306, 266);
+            this.pnlHelpDefPnl.Name = "pnlHelpDefPnl";
+            this.pnlHelpDefPnl.Size = new System.Drawing.Size(210, 66);
+            this.pnlHelpDefPnl.TabIndex = 31;
+            this.pnlHelpDefPnl.TextdColor = System.Drawing.Color.Black;
+            this.pnlHelpDefPnl.Visible = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(13, 10);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(170, 48);
+            this.label4.TabIndex = 27;
+            this.label4.Text = "Determines which panel will\r\n open when you load the\r\n program.";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Help;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(275, 330);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(35, 35);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 30;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave);
+            this.pictureBox1.MouseHover += new System.EventHandler(this.pictureBox1_MouseHover);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 400);
+            this.ClientSize = new System.Drawing.Size(800, 444);
+            this.Controls.Add(this.pnlHelpDefPnl);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.btnChangelog);
             this.Controls.Add(this.panelHelpChngDfltPos);
             this.Controls.Add(this.imgHelpChngDfltPos);
@@ -348,6 +424,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgHelpChngDfltPos)).EndInit();
             this.panelHelpChngDfltPos.ResumeLayout(false);
             this.panelHelpChngDfltPos.PerformLayout();
+            this.pnlHelpDefPnl.ResumeLayout(false);
+            this.pnlHelpDefPnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -374,5 +453,10 @@
         private customPanels panelHelpChngDfltPos;
         private System.Windows.Forms.Label label2;
         private resources.customButtons btnChangelog;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private customPanels pnlHelpDefPnl;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

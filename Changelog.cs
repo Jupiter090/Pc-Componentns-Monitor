@@ -39,7 +39,7 @@ namespace PcComponentsMonitor
                 txtChangelog.Text = sr.ReadToEnd().Replace("\n", Environment.NewLine);
             }
             //Offline changelog
-            catch (Exception ex)
+            catch
             {
 
                 try
@@ -59,10 +59,11 @@ namespace PcComponentsMonitor
                     //Create offline changelog
                     StreamWriter sw = new StreamWriter("Data/Changelog.txt");
                     sw.WriteLine("Changelog for version 0.5.0:\n" +
-                        " -Added new help icon \n" +
-                        " -Added new chnagelog form \n" +
-                        " -Added new 'gpu' panel \n" +
-                        " -Added new setting");
+                        " -Added a new help icon in settings which will give users a hint what the setting does. \n" +
+                        " -Added new changelog form. \n" +
+                        " -Added a new setting for the default panel. \n" +
+                        " -Added a new statistic at the RAM panel and that is ‘Free RAM in GB’. \n" +
+                        " -Added a new statistic at the Drive panel and that is ‘Write/sec / Read/sec’");
                     sw.Close();
 
                     //Loads text into textbox

@@ -155,7 +155,23 @@ namespace PcComponentsMonitor
                                       workingArea.Bottom - Size.Height);
             this.TopMost = true;
             this.ShowInTaskbar = false;
-            pc_info.Location = new Point(0, 27);
+
+            //Default panel
+            switch (Properties.Settings.Default.DefaultPanel)
+            {
+                case "PC":
+                    pc_info.Location = new Point(0, 27);
+                    break;
+                case "CPU":
+                    CPU_info.Location = new Point(0, 27);
+                    break;
+                case "RAM":
+                    RAM_info.Location = new Point(0, 27);
+                    break;
+                case "Drive":
+                    Drive_info.Location = new Point(0, 27);
+                    break;
+            }
 
             //Form postion
             if (Properties.Settings.Default.DefaultPosX != 0 && Properties.Settings.Default.DefualtPosY != 0)

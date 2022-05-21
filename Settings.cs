@@ -32,7 +32,9 @@ namespace PcComponentsMonitor
             dont = true;
             checkBox1.Checked = Properties.Settings.Default.Darkmode;
             comboBox1.Text = Properties.Settings.Default.Position;
+            comboBox2.Text = Properties.Settings.Default.DefaultPanel;
             chcIgnoreTskbar.Checked = Properties.Settings.Default.IgnoreTaskbar;
+            dont = false;
 
             if (Properties.Settings.Default.Darkmode)
             {
@@ -91,7 +93,6 @@ namespace PcComponentsMonitor
         {
             if (dont)
             {
-                dont = false;
                 return;
             }
             ComboBox comboBox = sender as ComboBox;
@@ -121,7 +122,6 @@ namespace PcComponentsMonitor
         {
             if (dont)
             {
-                dont = false;
                 return;
             }
             CheckBox checkBox = sender as CheckBox;
@@ -185,6 +185,28 @@ namespace PcComponentsMonitor
         {
             Form changelog = new Changelog();
             changelog.Show();
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (dont)
+            {
+                return;
+            }
+            ComboBox cb = sender as ComboBox;
+            Properties.Settings.Default.DefaultPanel = cb.Text;
+            Properties.Settings.Default.Save();
+            btnApply.Visible = true;
+        }
+
+        private void pictureBox1_MouseHover(object sender, EventArgs e)
+        {
+            pnlHelpDefPnl.Visible = true;
+        }
+
+        private void pictureBox1_MouseLeave(object sender, EventArgs e)
+        {
+            pnlHelpDefPnl.Visible = false;
         }
     }
 }

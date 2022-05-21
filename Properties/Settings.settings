@@ -26,5 +26,8 @@
     <Setting Name="DefualtPosY" Type="System.Single" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
+    <Setting Name="DefaultPanel" Type="System.String" Scope="User">
+      <Value Profile="(Default)">PC</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
