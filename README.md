@@ -17,6 +17,7 @@ If you found please report it on GitHub here in issues.
 - [ ] All drives
 - [ ] GPU
 - [x] Dark mode
+- [x] Changelog in the program
 - [x] Notifications
 - [x] Hide app setting
 - [x] Disable/Enable notifications
