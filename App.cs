@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Microsoft.Toolkit.Uwp.Notifications;
+using System.Runtime.InteropServices;
 
 namespace PcComponentsMonitor
 {
@@ -18,6 +19,7 @@ namespace PcComponentsMonitor
     {
         PerformanceCounter cpuCounter;
         PerformanceCounter ramCounter;
+        PerformanceCounter gpuCounter;
 
         private bool sendedWarning_cpu = false;
         private bool sendedWarning_cpu_usage = false;
@@ -30,6 +32,7 @@ namespace PcComponentsMonitor
         public App()
         {
             InitializeComponent();
+            //Cpu and ram counters
             cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
             ramCounter = new PerformanceCounter("Memory", "% Committed Bytes In Use");
         }
@@ -104,7 +107,7 @@ namespace PcComponentsMonitor
                 float driveUsedPercentage = driveUsed * 100 / driveFull;
                 drive_fullness.Text = "Fullness: " + Math.Round(driveUsedPercentage) + "%";
                 ChangeDriveUsedColor(Math.Round(driveUsedPercentage));
-                break;
+                break;    
             }
 
             //Resets the timer
@@ -138,13 +141,14 @@ namespace PcComponentsMonitor
             pc_info.Location = new Point(0, 27);
 
             //Form postion
-            if(Properties.Settings.Default.DefaultPosX != 0 && Properties.Settings.Default.DefualtPosY != 0)
+            if (Properties.Settings.Default.DefaultPosX != 0 && Properties.Settings.Default.DefualtPosY != 0)
             {
                 Point point = new Point();
                 point.X = (int)Properties.Settings.Default.DefaultPosX;
                 point.Y = (int)Properties.Settings.Default.DefualtPosY;
                 this.Location = point;
             }
+            
             else
             {
                 switch (Properties.Settings.Default.Position)
@@ -204,9 +208,9 @@ namespace PcComponentsMonitor
 
 
             double temperature = 0;
-            //Create new ManagementObjectSearcher
-            ManagementObjectSearcher searcher = new ManagementObjectSearcher(@"root\WMI", "SELECT * FROM MSAcpi_ThermalZoneTemperature");
-            foreach (ManagementObject obj in searcher.Get())
+            //Gets cpu temperature
+            ManagementObjectSearcher cpuObject = new ManagementObjectSearcher(@"root\WMI", "SELECT * FROM MSAcpi_ThermalZoneTemperature");
+            foreach (ManagementObject obj in cpuObject.Get())
             {
                 //Gets the cpu temp and converts it to °C
                 temperature = Convert.ToDouble(obj["CurrentTemperature"].ToString());
@@ -228,9 +232,9 @@ namespace PcComponentsMonitor
             cpu_usage.Text = "Usage: " + Math.Round(cpuCounter.NextValue(), MidpointRounding.ToEven) + "%";
 
             //Gets ram manufacturer
-            ManagementObjectSearcher myRamObject = new ManagementObjectSearcher("SELECT * FROM Win32_PhysicalMemory");
+            ManagementObjectSearcher ramObject = new ManagementObjectSearcher("SELECT * FROM Win32_PhysicalMemory");
 
-            foreach (ManagementObject obj in myRamObject.Get())
+            foreach (ManagementObject obj in ramObject.Get())
             {
                 ram_name.Text = "Manufacturer: " + obj["Manufacturer"].ToString();
             }
@@ -244,6 +248,7 @@ namespace PcComponentsMonitor
             DriveInfo[] allDrives = DriveInfo.GetDrives();
             foreach (DriveInfo drive in allDrives)
             {
+                
                 drive_name.Text = "Name: " + drive.VolumeLabel + " (" + drive.Name + ")";
                 drive_free_space.Text = "Free space: " + drive.TotalFreeSpace / 1073741824 + "MB / " + drive.TotalSize / 1073741824 + "MB";
                 float driveFull = drive.TotalSize / 1073741824;
@@ -252,6 +257,15 @@ namespace PcComponentsMonitor
                 drive_fullness.Text = "Fullness: " + Math.Round(driveUsedPercentage) + "%";
                 ChangeDriveUsedColor(Math.Round(driveUsedPercentage));
                 break;
+            }
+
+            //Gets gpu information
+            ManagementObjectSearcher gpuObject = new ManagementObjectSearcher("select * from Win32_VideoController");
+            foreach (ManagementObject obj in gpuObject.Get())
+            {
+                gpu_name.Text = "Name: " + obj["Name"];
+                break;
+
             }
 
             //Shows welcome message box

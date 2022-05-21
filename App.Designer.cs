@@ -67,12 +67,21 @@
             this.PC = new System.Windows.Forms.Label();
             this.pc_name = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.gpu_info = new System.Windows.Forms.Panel();
+            this.customButtons1 = new PcComponentsMonitor.resources.customButtons();
+            this.customButtons5 = new PcComponentsMonitor.resources.customButtons();
+            this.customButtons6 = new PcComponentsMonitor.resources.customButtons();
+            this.gpu_usage = new System.Windows.Forms.Label();
+            this.gpu_temp = new System.Windows.Forms.Label();
+            this.gpu = new System.Windows.Forms.Label();
+            this.gpu_name = new System.Windows.Forms.Label();
             this.panelName.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.CPU_info.SuspendLayout();
             this.RAM_info.SuspendLayout();
             this.Drive_info.SuspendLayout();
             this.pc_info.SuspendLayout();
+            this.gpu_info.SuspendLayout();
             this.SuspendLayout();
             // 
             // cpu_name
@@ -581,12 +590,124 @@
             this.pc_name.TabIndex = 0;
             this.pc_name.Text = "{pc_name}";
             // 
+            // gpu_info
+            // 
+            this.gpu_info.Controls.Add(this.customButtons1);
+            this.gpu_info.Controls.Add(this.customButtons5);
+            this.gpu_info.Controls.Add(this.customButtons6);
+            this.gpu_info.Controls.Add(this.gpu_usage);
+            this.gpu_info.Controls.Add(this.gpu_temp);
+            this.gpu_info.Controls.Add(this.gpu);
+            this.gpu_info.Controls.Add(this.gpu_name);
+            this.gpu_info.Location = new System.Drawing.Point(0, 267);
+            this.gpu_info.Name = "gpu_info";
+            this.gpu_info.Size = new System.Drawing.Size(526, 90);
+            this.gpu_info.TabIndex = 9;
+            // 
+            // customButtons1
+            // 
+            this.customButtons1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.customButtons1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.customButtons1.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.customButtons1.BorderRadius = 5;
+            this.customButtons1.BorderSize = 0;
+            this.customButtons1.FlatAppearance.BorderSize = 0;
+            this.customButtons1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.customButtons1.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.customButtons1.ForeColor = System.Drawing.Color.White;
+            this.customButtons1.Location = new System.Drawing.Point(442, 3);
+            this.customButtons1.Name = "customButtons1";
+            this.customButtons1.Size = new System.Drawing.Size(36, 36);
+            this.customButtons1.TabIndex = 8;
+            this.customButtons1.Text = "<";
+            this.customButtons1.TextdColor = System.Drawing.Color.White;
+            this.customButtons1.UseVisualStyleBackColor = false;
+            // 
+            // customButtons5
+            // 
+            this.customButtons5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.customButtons5.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.customButtons5.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.customButtons5.BorderRadius = 5;
+            this.customButtons5.BorderSize = 0;
+            this.customButtons5.FlatAppearance.BorderSize = 0;
+            this.customButtons5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.customButtons5.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.customButtons5.ForeColor = System.Drawing.Color.White;
+            this.customButtons5.Location = new System.Drawing.Point(479, 3);
+            this.customButtons5.Name = "customButtons5";
+            this.customButtons5.Size = new System.Drawing.Size(36, 36);
+            this.customButtons5.TabIndex = 7;
+            this.customButtons5.Text = ">";
+            this.customButtons5.TextdColor = System.Drawing.Color.White;
+            this.customButtons5.UseVisualStyleBackColor = false;
+            // 
+            // customButtons6
+            // 
+            this.customButtons6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.customButtons6.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.customButtons6.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.customButtons6.BorderRadius = 5;
+            this.customButtons6.BorderSize = 0;
+            this.customButtons6.FlatAppearance.BorderSize = 0;
+            this.customButtons6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.customButtons6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.customButtons6.ForeColor = System.Drawing.Color.White;
+            this.customButtons6.Location = new System.Drawing.Point(398, 51);
+            this.customButtons6.Name = "customButtons6";
+            this.customButtons6.Size = new System.Drawing.Size(122, 36);
+            this.customButtons6.TabIndex = 6;
+            this.customButtons6.Text = "Settings";
+            this.customButtons6.TextdColor = System.Drawing.Color.White;
+            this.customButtons6.UseVisualStyleBackColor = false;
+            // 
+            // gpu_usage
+            // 
+            this.gpu_usage.AutoSize = true;
+            this.gpu_usage.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.gpu_usage.Location = new System.Drawing.Point(15, 51);
+            this.gpu_usage.Name = "gpu_usage";
+            this.gpu_usage.Size = new System.Drawing.Size(80, 16);
+            this.gpu_usage.TabIndex = 4;
+            this.gpu_usage.Text = "{gpu_usage";
+            // 
+            // gpu_temp
+            // 
+            this.gpu_temp.AutoSize = true;
+            this.gpu_temp.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.gpu_temp.Location = new System.Drawing.Point(15, 35);
+            this.gpu_temp.Name = "gpu_temp";
+            this.gpu_temp.Size = new System.Drawing.Size(77, 16);
+            this.gpu_temp.TabIndex = 1;
+            this.gpu_temp.Text = "{gpu_temp}";
+            // 
+            // gpu
+            // 
+            this.gpu.AutoSize = true;
+            this.gpu.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.gpu.Location = new System.Drawing.Point(15, 3);
+            this.gpu.Name = "gpu";
+            this.gpu.Size = new System.Drawing.Size(43, 16);
+            this.gpu.TabIndex = 2;
+            this.gpu.Text = "GPU:";
+            // 
+            // gpu_name
+            // 
+            this.gpu_name.AutoSize = true;
+            this.gpu_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.gpu_name.Location = new System.Drawing.Point(15, 19);
+            this.gpu_name.Name = "gpu_name";
+            this.gpu_name.Size = new System.Drawing.Size(81, 16);
+            this.gpu_name.TabIndex = 0;
+            this.gpu_name.Text = "{gpu_name}";
+            // 
             // App
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(522, 118);
+            this.ClientSize = new System.Drawing.Size(522, 125);
+            this.Controls.Add(this.gpu_info);
             this.Controls.Add(this.pc_info);
             this.Controls.Add(this.panelName);
             this.Controls.Add(this.CPU_info);
@@ -609,6 +730,8 @@
             this.Drive_info.PerformLayout();
             this.pc_info.ResumeLayout(false);
             this.pc_info.PerformLayout();
+            this.gpu_info.ResumeLayout(false);
+            this.gpu_info.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -652,5 +775,13 @@
         private resources.customButtons previouse_cpu;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.Panel gpu_info;
+        private resources.customButtons customButtons1;
+        private resources.customButtons customButtons5;
+        private resources.customButtons customButtons6;
+        private System.Windows.Forms.Label gpu_usage;
+        private System.Windows.Forms.Label gpu_temp;
+        private System.Windows.Forms.Label gpu;
+        private System.Windows.Forms.Label gpu_name;
     }
 }

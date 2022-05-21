@@ -47,6 +47,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnApply = new PcComponentsMonitor.resources.customButtons();
             this.btnSettings = new PcComponentsMonitor.resources.customButtons();
+            this.btnChangelog = new PcComponentsMonitor.resources.customButtons();
             this.panelName.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgHelpChngDfltPos)).BeginInit();
@@ -98,10 +99,10 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "Right, Bottom",
-            "Right, Top",
             "Left, Bottom",
-            "Left, Top"});
+            "Left, Top",
+            "Right, Bottom",
+            "Right, Top"});
             this.comboBox1.Location = new System.Drawing.Point(21, 197);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(219, 24);
@@ -297,11 +298,33 @@
             this.btnSettings.UseVisualStyleBackColor = false;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
+            // btnChangelog
+            // 
+            this.btnChangelog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnChangelog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnChangelog.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnChangelog.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnChangelog.BorderRadius = 5;
+            this.btnChangelog.BorderSize = 0;
+            this.btnChangelog.FlatAppearance.BorderSize = 0;
+            this.btnChangelog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChangelog.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnChangelog.ForeColor = System.Drawing.Color.White;
+            this.btnChangelog.Location = new System.Drawing.Point(12, 351);
+            this.btnChangelog.Name = "btnChangelog";
+            this.btnChangelog.Size = new System.Drawing.Size(197, 37);
+            this.btnChangelog.TabIndex = 27;
+            this.btnChangelog.Text = "Changelog";
+            this.btnChangelog.TextdColor = System.Drawing.Color.White;
+            this.btnChangelog.UseVisualStyleBackColor = false;
+            this.btnChangelog.Click += new System.EventHandler(this.btnChangelog_Click);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 400);
+            this.Controls.Add(this.btnChangelog);
             this.Controls.Add(this.panelHelpChngDfltPos);
             this.Controls.Add(this.imgHelpChngDfltPos);
             this.Controls.Add(this.checkBox2);
@@ -350,5 +373,6 @@
         private System.Windows.Forms.PictureBox imgHelpChngDfltPos;
         private customPanels panelHelpChngDfltPos;
         private System.Windows.Forms.Label label2;
+        private resources.customButtons btnChangelog;
     }
 }

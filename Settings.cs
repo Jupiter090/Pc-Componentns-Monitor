@@ -180,5 +180,11 @@ namespace PcComponentsMonitor
         {
             panelHelpChngDfltPos.Visible = false;
         }
+
+        private void btnChangelog_Click(object sender, EventArgs e)
+        {
+            Form changelog = new Changelog();
+            changelog.Show();
+        }
     }
 }
